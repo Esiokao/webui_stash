@@ -48,8 +48,7 @@ line-length = 160
 target-version = "py310"
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I"]
-ignore = ["E501"]
+select = ["F"]
 
 [tool.ruff.format]
 quote-style = "double"
