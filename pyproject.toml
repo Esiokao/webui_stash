@@ -28,7 +28,7 @@ asyncio = "^3.4.3"
 pyserial-asyncio = "^0.6"
 colorama = "^0.4.6"
 prompt-toolkit = "^3.0.51"
-black = "^25.1.0"
+ruff = "^0.8.0"
 
 
 
@@ -43,16 +43,14 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.scripts]
 serial = "webui.command.main:main"
 
-# linter
-
-[tool.pylint.format]
-max-line-length = 160
-
-[tool.pylint.messages_control]
-disable = ["missing-function-docstring"]
-
-[tool.black]
+[tool.ruff]
 line-length = 160
-# only tests
-include = 'tests/.*\.py$'
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
 

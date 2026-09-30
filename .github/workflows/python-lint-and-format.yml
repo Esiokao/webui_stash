@@ -12,47 +12,32 @@ permissions:
   contents: write
 
 jobs:
-  lint-and-format:
+  ruff:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.10"]
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref || github.ref_name }}
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.10"
 
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v4
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
-
-      - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root
-
-      - name: Format code with black
+      - name: Install Ruff
         run: |
-          poetry run black src tests
+          python -m pip install --upgrade pip
+          pip install ruff
+
+      - name: Format code with Ruff
+        run: |
+          ruff format src tests
+
+      - name: Lint and Auto-fix with Ruff
+        run: |
+          ruff check --fix src tests || true
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'chore: format code with black'
-
-      - name: Analysing the code with pylint
-        run: |
-          poetry run pylint src tests --exit-zero
+          commit_message: 'chore: format and lint code with ruff'
