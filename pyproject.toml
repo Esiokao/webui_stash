@@ -46,7 +46,8 @@ serial = "webui.command.main:main"
 [tool.ruff]
 line-length = 160
 target-version = "py310"
-include = ["tests/**"]
+include = ["tests/**/*.py"]
+extend-exclude = [".properties"]
 
 [tool.ruff.lint]
 select = ["F"]
