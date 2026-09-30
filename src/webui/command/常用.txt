@@ -1,0 +1,23 @@
+#import同個階層的module
+
+import sys
+import os
+
+def getScriptPath():
+  return os.path.split(os.path.realpath(__file__))[0]
+
+CURRENT_PATH = getScriptPath()
+
+if CURRENT_PATH not in sys.path:
+  sys.path.append(CURRENT_PATH)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#import 不同階層
+
+# 將 invokers 資料夾的路徑加入 sys.path
+
+sys.path.append(os.path.join(getScriptPath(), 'invokers'))
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+你说得对，但是有一个小问题：谁问你了？🤓👆我的意思是，谁在意你？我告诉你，根本没人问你，在我们之中0人问了你，我把所有问你的人都请来party了，到场人数是0个人，谁问你了？WHO ASKED？誰が聞いた?누가 물어봤어?谁问汝矣？
