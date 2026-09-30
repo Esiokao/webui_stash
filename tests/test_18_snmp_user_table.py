@@ -85,7 +85,7 @@ class TestSNMPUserTable:
         assert expected_val == result
 
     def test_check_total_entries_title(self, snmp_user_table_page):
-        title= snmp_user_table_page.get_total_entries_title()
+        title = snmp_user_table_page.get_total_entries_title()
         expected_title = "Total Entries : 4"
 
         assert expected_title == title
@@ -101,7 +101,7 @@ class TestSNMPUserTable:
         expected_val = ["ReadOnly", "ReadOnly", "v1", "NONE", "NONE", "NONE", "NONE", ""]
 
         assert expected_val == result
-    
+
     def test_check_readonly_v1_table_button_text(self, snmp_user_table_page):
         result = snmp_user_table_page.get_readonly_v1_table_button_text()
         expected_val = "Delete"
@@ -113,7 +113,7 @@ class TestSNMPUserTable:
         expected_val = ["ReadOnly", "ReadOnly", "v2c", "NONE", "NONE", "NONE", "NONE", ""]
 
         assert expected_val == result
-    
+
     def test_check_readonly_v2c_table_button_text(self, snmp_user_table_page):
         result = snmp_user_table_page.get_readonly_v2c_table_button_text()
         expected_val = "Delete"
@@ -125,7 +125,7 @@ class TestSNMPUserTable:
         expected_val = ["ReadWrite", "ReadWrite", "v1", "NONE", "NONE", "NONE", "NONE", ""]
 
         assert expected_val == result
-    
+
     def test_check_readwrite_v1_table_button_text(self, snmp_user_table_page):
         result = snmp_user_table_page.get_read_write_v1_table_button_text()
         expected_val = "Delete"
@@ -137,7 +137,7 @@ class TestSNMPUserTable:
         expected_val = ["ReadWrite", "ReadWrite", "v2c", "NONE", "NONE", "NONE", "NONE", ""]
 
         assert expected_val == result
-    
+
     def test_check_readwrite_v2c_table_button_text(self, snmp_user_table_page):
         result = snmp_user_table_page.get_read_write_v2c_table_button_text()
         expected_val = "Delete"
@@ -191,5 +191,3 @@ class TestSNMPUserTable:
         expected_val = "Go"
 
         assert expected_val == result
-
-

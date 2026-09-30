@@ -61,7 +61,7 @@ class TestTwampServer:
 
         assert expected_title == title
         assert expected_val == value
-        
+
     def test_check_twamp_server_button_text(self, twamp_server_page):
         result = twamp_server_page.get_twamp_server_button_text()
         expected_val = "Apply"
@@ -73,17 +73,14 @@ class TestTwampServer:
         expected_val = ["Client", "Sessions", "Action"]
 
         assert expected_val == result
-        
+
     def test_check_twamp_server_table_empty(self, twamp_server_page):
         result = twamp_server_page.get_table_default_is_empty()
 
         assert result
-    
+
     def test_check_refresh_button_text(self, twamp_server_page):
         result = twamp_server_page.get_refresh_button_text()
         expected_val = "Refresh"
 
         assert expected_val == result
-        
-        
-        

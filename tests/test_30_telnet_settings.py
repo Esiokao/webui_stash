@@ -21,7 +21,7 @@ class TestTelnetSettings:
         expected_val = "Telnet Settings"
 
         assert expected_val == result
-    
+
     def test_check_telnet_state_title(self, telnet_settings_page):
         result = telnet_settings_page.get_telnet_state_title_text()
         expected_val = "Telnet State"
@@ -39,7 +39,7 @@ class TestTelnetSettings:
         expected_val = "Disabled"
 
         assert expected_val == result
-    
+
     def test_default_telnet_state_is_disabled(self, telnet_settings_page):
         opt = telnet_settings_page.get_checked_telnet_state_option()
         expected_val = "Disabled"

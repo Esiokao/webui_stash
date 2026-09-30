@@ -37,7 +37,7 @@ class TestPortSettings:
 
         assert expected_title == title
         assert expected_val == value
-    
+
     def test_check_media_title_and_value(self, port_settings_page):
         title, value = port_settings_page.get_media_title_and_value()
         expected_title = "Media"
@@ -121,7 +121,7 @@ class TestPortSettings:
         expected_val = ["Port", "Link Status", "State", "Speed", "MDI/MDIX", "Flow Control", "Auto Downgrade", "Capability Advertised"]
 
         assert expected_val == result
-    
+
     def test_check_table_value(self, port_settings_page):
         result = port_settings_page.get_table_value()
         expected_val = ["1", "Down", "Enabled", "Auto", "Auto", "Disabled", "Disabled", "10_half 10_full 100_half 100_full 1000_full"]
@@ -139,7 +139,7 @@ class TestPortSettings:
         expected_result = "Refresh"
 
         assert expected_result == result
-    
+
     def test_default_port_speed(self, port_settings_page):
         opt = port_settings_page.get_port_speed_checkbox_value()
         expected_val = ["10_half", "10_full", "100_half", "100_full", "1000full"]

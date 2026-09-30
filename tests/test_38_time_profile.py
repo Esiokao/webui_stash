@@ -66,6 +66,7 @@ class TestTimeRange:
 
         assert expected_val == result
 
+
 @allure.title("time_profile.time_range_information")
 class TestTimeRangeInformation:
 
@@ -80,7 +81,7 @@ class TestTimeRangeInformation:
         expected_val = "Total Entries : 0"
 
         assert expected_val == result
-        
+
     def test_table_title(self, time_profile_page):
         result = time_profile_page.get_table_title()
         expected_val = ["Range Name", "Weekdays", "From Day", "To Day", "Start Time", "End Time"]

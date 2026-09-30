@@ -39,7 +39,7 @@ class TestSNMPGlobalStateSettings:
         expected_val = "Disabled"
 
         assert expected_val == result
-    
+
     def test_default_snmp_global_state_settings_is_disabled(self, snmp_global_state_settings_page):
         opt = snmp_global_state_settings_page.get_checked_snmp_global_state_settings_option()
         expected_val = "Disabled"
@@ -51,5 +51,3 @@ class TestSNMPGlobalStateSettings:
         expected_val = "Apply"
 
         assert expected_val == result
-
-

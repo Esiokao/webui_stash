@@ -29,12 +29,9 @@ class TestMacAddressAgingTime:
 
         assert expected_title == title
         assert expected_value == value
-                        
+
     def test_check_get_mac_address_aging_time_button_text(self, mac_address_aging_time_page):
         result = mac_address_aging_time_page.get_get_mac_address_aging_time_button_text()
         expected_val = "Apply"
 
         assert expected_val == result
-        
-        
-        

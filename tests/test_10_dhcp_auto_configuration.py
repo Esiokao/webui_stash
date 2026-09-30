@@ -15,13 +15,13 @@ class TestDHCPAutoConfiguration:
         expected_val = "DHCP Auto Configuration"
 
         assert expected_val == result
-    
+
     def test_check_dhcp_auto_configuration_tier2_header(self, dhcp_auto_configuration_page):
         result = dhcp_auto_configuration_page.get_dhcp_auto_configuration_tier2_header_text()
         expected_val = "DHCP Auto Configuration"
 
         assert expected_val == result
-    
+
     def test_check_auto_configuration_title(self, dhcp_auto_configuration_page):
         result = dhcp_auto_configuration_page.get_auto_configuration_title_text()
         expected_val = "Auto Configuration State"

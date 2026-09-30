@@ -83,10 +83,10 @@ class TestIPInterfaceUI:
 
     def test_check_table_title(self, ip_interface_page):
         result = ip_interface_page.get_table_title()
-        expected_title = ["Interface Name", "VLAN Name", "IP State", "IPv4 Address", "Netmask", "Admin State",
-                          "Link State", "IPv6", "Edit", "Delete"]
+        expected_title = ["Interface Name", "VLAN Name", "IP State", "IPv4 Address", "Netmask", "Admin State", "Link State", "IPv6", "Edit", "Delete"]
 
         assert result == expected_title
+
 
 # TODO: IPv6 Interface Settings
 

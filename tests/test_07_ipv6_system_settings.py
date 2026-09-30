@@ -80,7 +80,7 @@ class TestNSRetransmitTimeSettings:
         assert expected_title == title
         assert expected_val == value
 
-    
+
 class TestAutomaticLinkLocalStateSettings:
     def test_check_automatic_link_local_state_header(self, ipv6_system_settings_page):
         result = ipv6_system_settings_page.get_automatic_link_local_state_header_text()
@@ -115,4 +115,3 @@ class TestViewAllIPv6Address:
         result = ipv6_system_settings_page.get_table_default_is_empty()
 
         assert result
-

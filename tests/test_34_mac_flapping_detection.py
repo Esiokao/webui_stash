@@ -39,7 +39,7 @@ class TestMacFlappingDetection:
         expected_val = "Disabled"
 
         assert expected_val == result
-    
+
     def test_default_state_is_disabled(self, mac_flapping_detection_page):
         opt = mac_flapping_detection_page.get_checked_state_option()
         expected_val = "Disabled"
@@ -55,7 +55,7 @@ class TestMacFlappingDetection:
         assert expected_value == value
 
     def test_check_total_entries_title(self, mac_flapping_detection_page):
-        title= mac_flapping_detection_page.get_total_entries_title()
+        title = mac_flapping_detection_page.get_total_entries_title()
         expected_title = "Total Entries : 0"
 
         assert expected_title == title
@@ -76,4 +76,3 @@ class TestMacFlappingDetection:
         expected_val = "Apply"
 
         assert expected_val == result
-        

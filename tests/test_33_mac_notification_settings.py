@@ -39,7 +39,7 @@ class TestMacNotificationGlobalSettings:
         expected_val = "Disabled"
 
         assert expected_val == result
-    
+
     def test_default_state_is_disabled(self, mac_notification_settings_page):
         opt = mac_notification_settings_page.get_checked_state_option()
         expected_val = "Disabled"
@@ -101,12 +101,13 @@ class TestMacNotificationPortSettings:
 
         assert expected_title == title
         assert expected_val == value
-    
+
     def test_check_MAC_Notification_Port_Settings_Table_button_text(self, mac_notification_settings_page):
         result = mac_notification_settings_page.get_MAC_Notification_Port_Settings_Table_button_text()
         expected_val = "Apply"
 
         assert expected_val == result
+
 
 @allure.title("mac_notification_settings.MAC_Notification_Port_State_Table")
 class TestMacNotificationPortStateTable:
@@ -128,5 +129,3 @@ class TestMacNotificationPortStateTable:
         expected_val = ["1", "Disabled"]
 
         assert expected_val == result
-        
-        

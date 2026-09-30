@@ -13,17 +13,17 @@ class TestDeviceInformation(ValueCheckMixins):
     def test_check_device_type_title(self, device_information_page, config):
         device_type_title, _ = device_information_page.get_device_type()
 
-        assert device_type_title == config["device_information"]["device_type"]["title"], 'false'
+        assert device_type_title == config["device_information"]["device_type"]["title"], "false"
 
     def test_check_device_type_value(self, device_information_page, config):
         _, device_type = device_information_page.get_device_type()
 
-        assert device_type == config["device_information"]["device_type"]["expected_value"], 'false'
+        assert device_type == config["device_information"]["device_type"]["expected_value"], "false"
 
     def test_check_system_time_title(self, device_information_page, config):
         system_time_title, _ = device_information_page.get_system_time()
 
-        assert system_time_title == config["device_information"]["system_time"]["title"], 'false'
+        assert system_time_title == config["device_information"]["system_time"]["title"], "false"
 
     def test_check_system_time_value(self, device_information_page, config):
         _, value = device_information_page.get_system_time()

@@ -29,12 +29,9 @@ class TestArpAgingTimeSettings:
 
         assert expected_title == title
         assert expected_value == value
-                        
+
     def test_check_get_arp_aging_time_button_text(self, arp_aging_time_settings_page):
         result = arp_aging_time_settings_page.get_get_arp_aging_time_button_text()
         expected_val = "Apply"
 
         assert expected_val == result
-        
-        
-        

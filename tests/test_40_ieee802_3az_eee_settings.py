@@ -57,13 +57,9 @@ class TestIEEE8023azEEEsettings:
         expected_val = ["Port", "State"]
 
         assert expected_val == result
-        
+
     def test_check_port1_table_value(self, ieee802_3az_eee_settings_page):
         result = ieee802_3az_eee_settings_page.get_port1_table_value()
         expected_val = ["1", "Disabled"]
 
         assert expected_val == result
-
-
-
-

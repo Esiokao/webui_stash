@@ -101,6 +101,7 @@ class TestAddSystemLogServer:
 
         assert expected_val == result
 
+
 @allure.title("system_log_server.system_log_server_list")
 class TestSystemLogServerList:
 
@@ -126,5 +127,3 @@ class TestSystemLogServerList:
         result = system_log_server_page.get_table_default_is_empty()
 
         assert result
-
-

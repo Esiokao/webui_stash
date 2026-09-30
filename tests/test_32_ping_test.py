@@ -21,7 +21,7 @@ class TestPingTest:
         expected_val = "Ping Test"
 
         assert expected_val == result
-    
+
     def test_check_target_ip_address_title_and_v4_value_v6_value(self, ping_test_page):
         title, value_v4, value_v6 = ping_test_page.get_target_ip_address_title_and_v4_value_v6_value()
         expected_title = "Target IP Address"

@@ -71,7 +71,7 @@ class TestSNMPViewTable:
         expected_val = ["View Name", "Subtree OID", "OID Mask", "View Type", "Delete"]
 
         assert expected_val == result
-        
+
     def test_check_readonly_table_value(self, snmp_view_table_page):
         result = snmp_view_table_page.get_readonly_table_value()
         expected_val = ["ReadOnly", "1", "1", "Included", ""]
@@ -89,7 +89,7 @@ class TestSNMPViewTable:
         expected_val = ["ReadWrite", "1", "1", "Included", ""]
 
         assert expected_val == result
-        
+
     def test_check_read_write_table_button_text(self, snmp_view_table_page):
         result = snmp_view_table_page.get_read_write_table_button_text()
         expected_val = "Delete"

@@ -27,7 +27,7 @@ class TestFanSettings:
         expected_val = "Fan Trap"
 
         assert expected_val == result
-        
+
     def test_check_fan_trap_option_one_text(self, peripheral_settings_page):
         result = peripheral_settings_page.get_fan_trap_option_one_text()
         expected_val = "Enabled"
@@ -45,7 +45,7 @@ class TestFanSettings:
         expected_val = "Disabled"
 
         assert opt == expected_val, "default fan trap is not Disabled"
-    
+
     def test_check_fan_mode_title_and_value(self, peripheral_settings_page):
         title, value = peripheral_settings_page.get_fan_mode_title_and_value()
         expected_title = "Fan Mode"
@@ -59,6 +59,7 @@ class TestFanSettings:
         expected_result = "Apply"
 
         assert expected_result == result
+
 
 @allure.title("peripheral_settings.environment_temperature_settings")
 class TestEnvironmentTemperatureSettings:
@@ -86,13 +87,13 @@ class TestEnvironmentTemperatureSettings:
         expected_val = "Disabled"
 
         assert expected_val == result
-    
+
     def test_default_temperature_trap_is_disabled(self, peripheral_settings_page):
         opt = peripheral_settings_page.get_checked_temperature_trap_option()
         expected_val = "Disabled"
 
         assert opt == expected_val, "default temperature trap is not Disabled"
-    
+
     def test_check_high_threshold_title_and_value(self, peripheral_settings_page):
         title, value = peripheral_settings_page.get_high_threshold_title_and_value()
         expected_title = "High Threshold (-100-200)"
@@ -106,7 +107,7 @@ class TestEnvironmentTemperatureSettings:
         expected_val = "Default"
 
         assert expected_val == result
-    
+
     def test_check_low_threshold_title_and_value(self, peripheral_settings_page):
         title, value = peripheral_settings_page.get_low_threshold_title_and_value()
         expected_title = "Low Threshold (-100-200)"
@@ -126,4 +127,3 @@ class TestEnvironmentTemperatureSettings:
         expected_result = "Apply"
 
         assert expected_result == result
-

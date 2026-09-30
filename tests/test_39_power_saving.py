@@ -47,7 +47,7 @@ class TestGlobalSettings:
         expected_val = "Disabled"
 
         assert expected_val == result
-    
+
     def test_default_link_status_detection_version_is_disabled(self, power_saving_page):
         opt = power_saving_page.get_checked_link_status_detection_version_option()
         expected_val = "Disabled"
@@ -65,6 +65,7 @@ class TestGlobalSettings:
         expected_val = [str(i) for i in range(1, 53)]
 
         assert expected_val == result
+
 
 @allure.title("power_saving.advanced_power_saving_settings")
 class TestAdvancedPowerSavingSettings:
@@ -118,7 +119,7 @@ class TestAdvancedPowerSavingSettings:
         expected_val = "Clear"
 
         assert expected_val == result
-        
+
     def test_check_apply_button_text(self, power_saving_page):
         result = power_saving_page.get_apply_button_text()
         expected_val = "Apply"
@@ -130,6 +131,7 @@ class TestAdvancedPowerSavingSettings:
         expected_val = [str(i) for i in range(1, 53)]
 
         assert expected_val == result
+
 
 @allure.title("power_saving.summary")
 class TestSummary:

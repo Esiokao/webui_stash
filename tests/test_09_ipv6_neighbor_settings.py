@@ -52,6 +52,7 @@ class TestIPv6NeighborSettings:
 
         assert expected_val == result
 
+
 @allure.title("ipv6_neighbor_settings.IPv6_Neighbor_Table")
 class TestIPv6NeighborTable:
 
@@ -65,7 +66,7 @@ class TestIPv6NeighborTable:
         title, value = ipv6_neighbor_settings_page.get_Neighbor_Table_interface_name_title_and_value()
         expected_title = "Interface Name"
         expected_val = ""
-        
+
         assert expected_title == title
         assert expected_val == value
 
@@ -80,7 +81,7 @@ class TestIPv6NeighborTable:
         assert expected_val2 == value2
 
     def test_check__total_entries_title(self, ipv6_neighbor_settings_page):
-        title= ipv6_neighbor_settings_page.get_total_entries_title()
+        title = ipv6_neighbor_settings_page.get_total_entries_title()
         expected_title = "Total Entries : 0"
 
         assert expected_title == title

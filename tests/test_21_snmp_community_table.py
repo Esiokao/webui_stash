@@ -51,41 +51,39 @@ class TestSNMPCommunityTable:
         expected_val = "Apply"
 
         assert expected_val == result
-        
+
     def test_check_total_entries_title(self, snmp_community_table_page):
         result = snmp_community_table_page.get_total_entries_title()
         expected_val = "Total Entries : 2"
 
         assert expected_val == result
-        
+
     def test_check_table_title(self, snmp_community_table_page):
         result = snmp_community_table_page.get_table_title()
         expected_val = ["Community Name", "View Name", "Access Right", "Delete"]
 
         assert expected_val == result
-        
+
     def test_check_private_table_value(self, snmp_community_table_page):
         result = snmp_community_table_page.get_private_table_value()
         expected_val = ["private", "ReadWrite", "ReadWrite", ""]
 
         assert expected_val == result
-        
+
     def test_check_private_table_button_text(self, snmp_community_table_page):
         result = snmp_community_table_page.get_private_table_button_text()
         expected_val = "Delete"
 
         assert expected_val == result
-        
+
     def test_check_public_table_value(self, snmp_community_table_page):
         result = snmp_community_table_page.get_public_table_value()
         expected_val = ["public", "ReadOnly", "ReadOnly", ""]
 
         assert expected_val == result
-        
+
     def test_check_public_table_button_text(self, snmp_community_table_page):
         result = snmp_community_table_page.get_public_table_button_text()
         expected_val = "Delete"
 
         assert expected_val == result
-        
-

@@ -26,13 +26,13 @@ class TestAccessProfileList:
         expected_val = "Add ACL Profile"
 
         assert expected_val == result
-        
+
     def test_check_ACL_Profile_button2_text(self, access_profile_list_page):
         result = access_profile_list_page.get_ACL_Profile_button2_text()
         expected_val = "Delete All"
 
         assert expected_val == result
-    
+
     def test_check_table_title(self, access_profile_list_page):
         result = access_profile_list_page.get_table_title()
         expected_val = ["Profile ID", "Owner Type", "Profile Summary", "Action", "Action", "Action"]

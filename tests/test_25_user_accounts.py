@@ -55,7 +55,7 @@ class TestUserAccounts:
         assert expected_value == value
 
     def test_check_note_text(self, user_accounts_page):
-        value1,value2,value3 = user_accounts_page.get_note_text()
+        value1, value2, value3 = user_accounts_page.get_note_text()
         expected_val1 = "Note:"
         expected_val2 = "User Name should be less than 32 characters."
         expected_val3 = "Password should be less than 30 characters."
@@ -75,7 +75,7 @@ class TestUserAccounts:
         expected_val = "Total Entries : 0"
 
         assert expected_val == result
-        
+
     def test_check_table_title(self, user_accounts_page):
         result = user_accounts_page.get_table_title()
         expected_val = ["User Name", "Access Right", "Password"]
@@ -86,6 +86,3 @@ class TestUserAccounts:
         result = user_accounts_page.get_table_default_is_empty()
 
         assert result
-        
-        
-
