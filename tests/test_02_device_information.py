@@ -164,13 +164,6 @@ class TestDeviceStatusAndQuickConfigurations(ValueCheckMixins):
         assert title_result, "safeguard engine title test failed"
         assert value_result, "safeguard engine value test failed"
 
-    def test_check_safeguard_engine(self, device_information_page, config):
-        title, value = device_information_page.get_safeguard_engine()
-        title_result = self.check_title(config["device_information"]["safeguard_engine"], title)
-        value_result = self.check_value(config["device_information"]["safeguard_engine"], value)
-        assert title_result, "safeguard mode title test failed"
-        assert value_result, "safeguard mode value test failed"
-
     def test_check_dhcp_client(self, device_information_page, config):
         title, value = device_information_page.get_dhcp_client()
         title_result = self.check_title(config["device_information"]["dhcp_client"], title)
