@@ -1,15 +1,11 @@
 # test_36_system_log_settings.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("system_log_settings.system_log_global_settings")
 class TestSystemLogGlobalSettings:
-
     def test_check_header(self, system_log_settings_page):
         result = system_log_settings_page.get_page_header_text()
         expected_val = "System Log Settings"
@@ -49,7 +45,6 @@ class TestSystemLogGlobalSettings:
 
 @allure.title("system_log_settings.system_log_save_mode_settings")
 class TestSystemLogSaveModeSettings:
-
     def test_check_system_log_save_mode_settings_header(self, system_log_settings_page):
         result = system_log_settings_page.get_system_log_save_mode_settings_header_text()
         expected_val = "System Log Save Mode Settings"

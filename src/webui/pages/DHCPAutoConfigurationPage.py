@@ -3,8 +3,6 @@ from selenium.webdriver.common.by import By
 
 from webui.pages.BasePage import BasePage
 
-from webui.utils.generate_screenshot_name import generate_screenshot_name
-
 
 class DHCPAutoConfigurationPage(BasePage):
     def __init__(self, driver, base_url):
@@ -20,9 +18,7 @@ class DHCPAutoConfigurationPage(BasePage):
         self.init()
 
     def init(self):
-        system_menu_locator = (
-            By.CSS_SELECTOR,
-            ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
+        system_menu_locator = (By.CSS_SELECTOR, ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
         DHCP_Auto_ConfigurationPage_menu_locator = (By.CSS_SELECTOR, ".is-opened > .el-menu > .menu-wrapper:nth-child(7) span")
 
         self.find_element_if_present(system_menu_locator).click()
@@ -37,7 +33,7 @@ class DHCPAutoConfigurationPage(BasePage):
         get_dhcp_auto_configuration_tier2_header_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > legend")
 
         return self.find_element_then_get_text(get_dhcp_auto_configuration_tier2_header_locator)
-    
+
     def get_auto_configuration_title_text(self):
         get_auto_configuration_title_text_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td > span")
 
@@ -47,9 +43,12 @@ class DHCPAutoConfigurationPage(BasePage):
         get_auto_configuration_title_text_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td:nth-child(2) > div > span > label")
 
         return self.find_element_then_get_text(get_auto_configuration_title_text_locator)
-    
+
     def get_auto_configuration_State_option_two_text(self):
-        get_auto_configuration_title_text_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td:nth-child(2) > div > span:nth-child(2) > label")
+        get_auto_configuration_title_text_locator = (
+            By.CSS_SELECTOR,
+            "div:nth-child(2) > fieldset > table > tr > td:nth-child(2) > div > span:nth-child(2) > label",
+        )
 
         return self.find_element_then_get_text(get_auto_configuration_title_text_locator)
 
@@ -62,8 +61,7 @@ class DHCPAutoConfigurationPage(BasePage):
 
     def get_Timeout_title_and_value(self):
         # input
-        title_locator = (By.CSS_SELECTOR,
-                         "div:nth-child(2) > fieldset > table > tr:nth-child(2) > td > span")
+        title_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr:nth-child(2) > td > span")
         value_locator = (By.CSS_SELECTOR, "#sysDhcpAutoConfigTime")
         title = self.find_element_then_get_text(title_locator)
         value = self.find_input_value(value_locator)
@@ -76,8 +74,7 @@ class DHCPAutoConfigurationPage(BasePage):
         return self.find_input_value(get_auto_configuration_title_text_locator)
 
     def get_auto_configuration_note_text(self):
-        value1_locator = (By.CSS_SELECTOR,
-                         ".sx-section > fieldset > table:nth-child(3) > tr:nth-child(1) > td > span")
+        value1_locator = (By.CSS_SELECTOR, ".sx-section > fieldset > table:nth-child(3) > tr:nth-child(1) > td > span")
         value2_locator = (By.CSS_SELECTOR, ".sx-section > fieldset > table:nth-child(3) > tr:nth-child(2) > td > span:nth-child(1)")
         value3_locator = (By.CSS_SELECTOR, ".sx-section > fieldset > table:nth-child(3) > tr:nth-child(2) > td > span:nth-child(2)")
         value1 = self.find_element_then_get_text(value1_locator)

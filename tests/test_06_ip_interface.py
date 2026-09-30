@@ -1,11 +1,6 @@
 # tests/test_6_ip_interface.py
-import time
-import allure
-import sys
-import os
 
-from webui.utils.all_exist_in_order import all_exist_in_order
-from webui.mixins.TestUtils import ValueCheckMixins
+import allure
 
 
 @allure.title("IPInterface")

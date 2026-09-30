@@ -1,15 +1,11 @@
 # test_29_web_settings.py
 
+
 import allure
-import pytest
-import asyncio
-import os
-from webui.utils.all_exist_in_order import all_exist_in_order
 
 
 @allure.title("Web_Settings")
 class TestWebSettings:
-
     def test_check_header(self, web_settings_page):
         result = web_settings_page.get_page_header_text()
         expected_val = "Web Settings"

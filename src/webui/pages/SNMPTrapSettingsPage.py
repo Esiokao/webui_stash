@@ -1,8 +1,7 @@
 # pages/SNMPTrapSettingsPage.py
 from selenium.webdriver.common.by import By
-from webui.pages.BasePage import BasePage
 
-from webui.utils.generate_screenshot_name import generate_screenshot_name
+from webui.pages.BasePage import BasePage
 
 
 class SNMPTrapSettingsPage(BasePage):
@@ -19,9 +18,7 @@ class SNMPTrapSettingsPage(BasePage):
         self.init()
 
     def init(self):
-        SYSTEM_MENU_LOCATOR = (
-            By.CSS_SELECTOR,
-            ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
+        SYSTEM_MENU_LOCATOR = (By.CSS_SELECTOR, ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
         SNMP_SETTINGS_MENU_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > li > ul > div:nth-child(11) > li > div > span:nth-child(4)")
         SNMP_TRAP_SETTINGS_MENU_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > li > ul > div:nth-child(11) > li > ul > div:nth-child(8) > a > li > span")
         self.find_element_if_present(SYSTEM_MENU_LOCATOR).click()
@@ -33,7 +30,7 @@ class SNMPTrapSettingsPage(BasePage):
     def get_page_header_text(self):
         PAGE_HEADER_LOCATOR = (By.CSS_SELECTOR, "#app > div > div > section > div > section > div > div")
         return self.find_element_then_get_text(PAGE_HEADER_LOCATOR)
-    
+
     def get_snmp_trap_settings_tier2_header_text(self):
         SNMP_TRAP_SETTINGS_TIER2_HEADER_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > legend")
         return self.find_element_then_get_text(SNMP_TRAP_SETTINGS_TIER2_HEADER_LOCATOR)
@@ -169,7 +166,8 @@ class SNMPTrapSettingsPage(BasePage):
         DYING_GASP_TRAPS_TYPES_VALUE_LOCATOR = (By.CSS_SELECTOR, "#dyingGaspTrapsTypes")
         td_element = self.find_element_if_visible(DYING_GASP_TRAPS_TYPES_TITLE_LOCATOR)
         if td_element:
-            title = self.driver.execute_script("""
+            title = self.driver.execute_script(
+                """
                 var td = arguments[0];
                 var text = "";
                 for (var i = 0; i < td.childNodes.length; i++) {
@@ -178,7 +176,9 @@ class SNMPTrapSettingsPage(BasePage):
                     }
                 }
                 return text.trim();
-            """, td_element)
+            """,
+                td_element,
+            )
         else:
             title = None
         value = self.find_selected_value_within(DYING_GASP_TRAPS_TYPES_VALUE_LOCATOR)
@@ -189,7 +189,10 @@ class SNMPTrapSettingsPage(BasePage):
         return self.find_input_value(TRAP_SETTINGS_BUTTON_LOCATOR)
 
     def get_snmp_link_change_trap_port_table_header(self):
-        SNMP_LINK_CHANGE_TRAP_PORT_TABLE_HEADER_LOCATOR = (By.CSS_SELECTOR, "#app > div > div > section > div > section > div > div:nth-child(3) > fieldset > legend")
+        SNMP_LINK_CHANGE_TRAP_PORT_TABLE_HEADER_LOCATOR = (
+            By.CSS_SELECTOR,
+            "#app > div > div > section > div > section > div > div:nth-child(3) > fieldset > legend",
+        )
         return self.find_element_then_get_text(SNMP_LINK_CHANGE_TRAP_PORT_TABLE_HEADER_LOCATOR)
 
     def get_linkchange_trap_port_select_all_button_text(self):
@@ -220,7 +223,7 @@ class SNMPTrapSettingsPage(BasePage):
 
     def get_snmp_sending_trap_port_select_all_button_text(self):
         SNMP_SENDING_TRAP_PORT_SELECT_ALL_BUTTON_LOCATOR = (By.CSS_SELECTOR, "#TrapselectAll")
-        
+
         element = self.driver.find_element(*SNMP_SENDING_TRAP_PORT_SELECT_ALL_BUTTON_LOCATOR)
         self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
 
@@ -243,5 +246,3 @@ class SNMPTrapSettingsPage(BasePage):
         locator = (By.XPATH, "/html/body/div[1]/div/div/section/div/section/div/div[4]/fieldset/div/div/table/tbody")
         checked_numbers = self.find_checked_checkboxes_text(locator, self.get_head_span_text)
         return checked_numbers
-
-

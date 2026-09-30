@@ -1,15 +1,11 @@
 # test_20_snmp_view_table.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("snmp_view_table")
 class TestSNMPViewTable:
-
     def test_check_header(self, snmp_view_table_page):
         result = snmp_view_table_page.get_page_header_text()
         expected_val = "SNMP View Table Configuration"

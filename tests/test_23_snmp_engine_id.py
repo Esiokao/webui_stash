@@ -1,15 +1,12 @@
 # test_23_snmp_engine_id.py
 
-import allure
-import pytest
-import asyncio
 import os
-from webui.utils.all_exist_in_order import all_exist_in_order
+
+import allure
 
 
 @allure.title("snmp_engine_id")
 class TestSNMPEngineID:
-
     def test_check_header(self, snmp_engine_id_page):
         result = snmp_engine_id_page.get_page_header_text()
         expected_val = "SNMP Engine ID"

@@ -1,5 +1,5 @@
-from webui.command.Invokers.TestInvoker import TestInvoker
 from webui.command.commands.LogoutCommand import LogoutCommand
+from webui.command.Invokers.TestInvoker import TestInvoker
 
 
 def run(crt_env):
@@ -14,6 +14,5 @@ def run(crt_env):
 
         return True
 
-    except Exception as e:
-
+    except Exception:
         return False

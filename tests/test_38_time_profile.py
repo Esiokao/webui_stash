@@ -1,15 +1,11 @@
 # test_38_time_profile.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("time_profile.time_range")
 class TestTimeRange:
-
     def test_check_header(self, time_profile_page):
         result = time_profile_page.get_page_header_text()
         expected_val = "Time Profile"
@@ -69,7 +65,6 @@ class TestTimeRange:
 
 @allure.title("time_profile.time_range_information")
 class TestTimeRangeInformation:
-
     def test_check_time_range_information_header(self, time_profile_page):
         result = time_profile_page.get_time_range_information_header_text()
         expected_val = "Time Range Information"

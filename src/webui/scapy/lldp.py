@@ -1,10 +1,7 @@
-from scapy.all import *
-
-from generate_mac import generate_mac
-import random
 import math
-import sys
-import os
+import random
+
+from scapy.all import *
 
 from webui.scapy.utils.random_hex import random_hex
 
@@ -13,14 +10,14 @@ print(random_hex("0x"))
 
 def random_hex(prefix):
     """
-  隨機產生一位數的 16 進位制字串並加上指定前綴。
+    隨機產生一位數的 16 進位制字串並加上指定前綴。
 
-  Args:
-    prefix: 字串前綴。
+    Args:
+      prefix: 字串前綴。
 
-  Returns:
-    隨機產生的 16 進位制字串。
-  """
+    Returns:
+      隨機產生的 16 進位制字串。
+    """
 
     hex_digits = "0123456789ABCDEF"
     return prefix + random.choice(hex_digits)
@@ -60,11 +57,11 @@ def lldp_med():
 
         chassis = bytearray(7)
 
-        #chassis[0:3] = (0x02,0x06,0x07)
+        # chassis[0:3] = (0x02,0x06,0x07)
 
         chassis[0:3] = (0x02, 0x07, 0x04)
 
-        chassis[3:] = (0x94, 0xf1, 0x28, 0x8b, digi_front, digi_rear)
+        chassis[3:] = (0x94, 0xF1, 0x28, 0x8B, digi_front, digi_rear)
 
         # chassis[3:] = str.encode('94:f1:28:8b:aa:1e', 'utf-8')
         # print(str.encode('94:f1:28:8b:aa:1e', 'utf-8'))
@@ -73,32 +70,29 @@ def lldp_med():
 
         sysname = bytearray(7)
 
-        sysname[0:2] = (0x0a, 0x0c)
+        sysname[0:2] = (0x0A, 0x0C)
 
-        sysname[2:] = str.encode('FakeSwitch01', 'utf-8')
+        sysname[2:] = str.encode("FakeSwitch01", "utf-8")
 
         # Sys Description
 
         sysdesc = bytearray(12)
 
-        sysdesc[0:2] = (0x0c, 0x3f)
+        sysdesc[0:2] = (0x0C, 0x3F)
 
         # sysdesc[2:] = str.encode(
         #     'Aruba JL258A 2930F-8G-PoE+-2SFP+ Switch, revision WC.16.10.0015, ROM WC.16.01.0008 (/ws/swbuildm/rel_ajanta_qaoff/code/build/lvm(swbuildm_rel_ajanta_qaoff_rel_ajanta))',
         #     'utf-8')
-        sysdesc[2:] = str.encode(
-            str('DXS-1210-10TS 10GbE Smart Managed Switch Rev.B1/V2.02.003(Test)'
-                ), 'utf-8')
+        sysdesc[2:] = str.encode(str("DXS-1210-10TS 10GbE Smart Managed Switch Rev.B1/V2.02.003(Test)"), "utf-8")
 
         # Management address
         mgmtaddr = bytearray(7)
 
-        mgmtaddr[0:2] = (0x10, 0x0c)
+        mgmtaddr[0:2] = (0x10, 0x0C)
 
-        mgmtaddr[2:] = (0x05, 0x01, 0x0a, 0x01, 0x01, 0x08, 0x02, 0x00, 0x00,
-                        0x00, 0x00, 0x00)
+        mgmtaddr[2:] = (0x05, 0x01, 0x0A, 0x01, 0x01, 0x08, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00)
 
-        #portID = bytearray( (0x04,0x07,0x03, 0x00,0x01,0x02,0xff,0xfe,0xfd) ) # fake MAC address
+        # portID = bytearray( (0x04,0x07,0x03, 0x00,0x01,0x02,0xff,0xfe,0xfd) ) # fake MAC address
 
         # Port ID
 
@@ -112,7 +106,7 @@ def lldp_med():
 
         cap = bytearray(7)
 
-        cap[0:2] = (0x0e, 0x04)
+        cap[0:2] = (0x0E, 0x04)
 
         cap[2:] = (0x00, 0x14, 0x00, 0x14)
 
@@ -120,9 +114,9 @@ def lldp_med():
 
         vendor = bytearray(7)
 
-        vendor[0:2] = (0xfe, 0x06)
+        vendor[0:2] = (0xFE, 0x06)
 
-        vendor[2:] = (0x00, 0x16, 0xb9, 0x02, 0x00, 0x00)
+        vendor[2:] = (0x00, 0x16, 0xB9, 0x02, 0x00, 0x00)
 
         # Port description
 
@@ -132,17 +126,17 @@ def lldp_med():
 
         med = bytearray(7)
 
-        med[0:2] = (0xfe, 0x07)
+        med[0:2] = (0xFE, 0x07)
 
-        med[2:] = (0x00, 0x12, 0xbb, 0x01, 0x00, 0x0f, 0x04)
+        med[2:] = (0x00, 0x12, 0xBB, 0x01, 0x00, 0x0F, 0x04)
 
         # LLDP/MED network policy
 
         networkPolicy = bytearray(10)
 
-        networkPolicy[0:2] = (0xfe, 0x08)
+        networkPolicy[0:2] = (0xFE, 0x08)
 
-        networkPolicy[2:5] = (0x00, 0x12, 0xbb)
+        networkPolicy[2:5] = (0x00, 0x12, 0xBB)
 
         # Media SubType
         networkPolicy[5:7] = (0x02, 0x01)
@@ -156,9 +150,9 @@ def lldp_med():
 
         portvlan = bytearray(7)
 
-        portvlan[0:2] = (0xfe, 0x06)
+        portvlan[0:2] = (0xFE, 0x06)
 
-        portvlan[2:] = (0x00, 0x80, 0xc2, 0x01, 0x00, 0x01)
+        portvlan[2:] = (0x00, 0x80, 0xC2, 0x01, 0x00, 0x01)
 
         # End padding
 
@@ -166,21 +160,19 @@ def lldp_med():
 
         # Build payload
 
-        payload = bytes(chassis + portID + TTL + sysname + sysdesc + cap +
-                        mgmtaddr + vendor + portdescr + med + networkPolicy +
-                        portvlan + end)
+        payload = bytes(chassis + portID + TTL + sysname + sysdesc + cap + mgmtaddr + vendor + portdescr + med + networkPolicy + portvlan + end)
 
-        #LLDP multicast address
+        # LLDP multicast address
 
-        mac_lldp_multicast = '01:80:c2:00:00:0e'
+        mac_lldp_multicast = "01:80:c2:00:00:0e"
 
         # Build frame
 
         # eth = Ether(src='94:f1:28:8b:aa:21', dst=mac_lldp_multicast, type=0x88cc)
-        eth = Ether(src=mac_src, dst=mac_lldp_multicast, type=0x88cc)
-        frame = eth / Raw(load=bytes(payload)) / Padding(b'\x00\x00\x00\x00')
+        eth = Ether(src=mac_src, dst=mac_lldp_multicast, type=0x88CC)
+        frame = eth / Raw(load=bytes(payload)) / Padding(b"\x00\x00\x00\x00")
 
-        #frame length should be 60, minimum Ethernet frame length
+        # frame length should be 60, minimum Ethernet frame length
 
         # Output packet to console
         frame.show()
@@ -199,19 +191,17 @@ def lldp_med():
         #                                     random_hex.random_hex(""))
 
         # mac_src = "0A:E0:AA:" + format(_, 'x')
-        macSrcPrefix = '90:94:E4:8b:'
-        mac_src = macSrcPrefix + to_hex_string(head) + ":" + to_hex_string(
-            rear)
+        macSrcPrefix = "90:94:E4:8b:"
+        mac_src = macSrcPrefix + to_hex_string(head) + ":" + to_hex_string(rear)
 
         genFrameThenSend(mac_src, digi_front, digi_rear)
 
 
 def to_hex_string(number):
     # "%02x" % number
-    hex_string = format(number, '02x')
+    hex_string = format(number, "02x")
     return hex_string
 
 
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     lldp_med()

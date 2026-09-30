@@ -1,15 +1,12 @@
 # test_7_ipv6_system_settings.py
 
+
 import allure
 import pytest
-import asyncio
-
-from webui.utils.all_exist_in_order import all_exist_in_order
 
 
 @allure.title("ipv6_system_settings.interface_settings")
 class TestIPv6SystemSettings:
-
     def test_check_header(self, ipv6_system_settings_page):
         result = ipv6_system_settings_page.get_page_header_text()
         expected_val = "IPv6 System Settings"
@@ -65,7 +62,6 @@ class TestIPv6SystemSettings:
 
 @allure.title("ipv6_system_settings.ns_retransmit_time_settings")
 class TestNSRetransmitTimeSettings:
-
     def test_check_ns_retransmit_header(self, ipv6_system_settings_page):
         result = ipv6_system_settings_page.get_ns_retransmit_time_header_text()
         expected_val = "NS Retransmit Time Settings"

@@ -1,15 +1,11 @@
 # test_10_dhcp_auto_configuration.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("dhcp_auto_configuration")
 class TestDHCPAutoConfiguration:
-
     def test_check_header(self, dhcp_auto_configuration_page):
         result = dhcp_auto_configuration_page.get_page_header_text()
         expected_val = "DHCP Auto Configuration"

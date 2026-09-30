@@ -1,14 +1,13 @@
 # conftest.py
-import sys
-from dotenv import load_dotenv
 import os
+
+from dotenv import load_dotenv
 
 load_dotenv("Settings.env")
 
+import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
-import pytest
 
 
 @pytest.fixture(scope="session")

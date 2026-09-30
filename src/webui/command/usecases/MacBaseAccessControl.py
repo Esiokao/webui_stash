@@ -1,6 +1,7 @@
 from collections import namedtuple
-from webui.command.Invokers.TestInvoker import TestInvoker
+
 from webui.command.commands.MacBaseAccessControlCommand import MacBaseAccessControlCommand
+from webui.command.Invokers.TestInvoker import TestInvoker
 from webui.command.utils.randomMac import random_mac
 
 
@@ -24,6 +25,5 @@ def run(crt_env):
 
         return True
 
-    except Exception as e:
-
+    except Exception:
         return False

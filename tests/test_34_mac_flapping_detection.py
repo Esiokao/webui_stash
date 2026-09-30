@@ -1,15 +1,11 @@
 # test_34_mac_flapping_detection.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("mac_flapping_detection")
 class TestMacFlappingDetection:
-
     def test_check_header(self, mac_flapping_detection_page):
         result = mac_flapping_detection_page.get_page_header_text()
         expected_val = "MAC Flapping Detection"

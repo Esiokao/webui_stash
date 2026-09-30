@@ -1,15 +1,11 @@
 # test_21_snmp_community_table.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("snmp_community_table")
 class TestSNMPCommunityTable:
-
     def test_check_header(self, snmp_community_table_page):
         result = snmp_community_table_page.get_page_header_text()
         expected_val = "SNMP Community Table Configuration"

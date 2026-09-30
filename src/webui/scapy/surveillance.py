@@ -1,17 +1,11 @@
-from scapy.all import *
-import math
-import sys
 
 from generate_mac import generate_mac
-import random
-import math
-from webui.scapy.utils.random_hex import random_hex
+from scapy.all import *
 
 
 def fdb_table():
 
     for _ in range(100):
-
         # mac_src = generate_mac.vid_provided("00:" + random_hex.random_hex("") +
 
         #                                     random_hex.random_hex("") + ":" +
@@ -29,10 +23,7 @@ def fdb_table():
         print(surveillance)
         # mac_src = generate_mac.total_random()
         # print(surveillance)
-        pkt = Ether(src=surveillance) / \
-            Dot1Q(vlan=2) / \
-            IP(dst="10.90.90.90", src="10.90.90.55") / \
-            ICMP()
+        pkt = Ether(src=surveillance) / Dot1Q(vlan=2) / IP(dst="10.90.90.90", src="10.90.90.55") / ICMP()
         print(pkt.show())
         sendp(pkt, iface="eth1")
 
@@ -52,8 +43,7 @@ def surveillance():
         print(surveillance)
         # mac_src = generate_mac.total_random()
         # print(surveillance)
-        pkt = Ether(src=surveillance, dst='FF:FF:FF:FF:FF:FF') / \
-            IP(dst="10.90.90.90", src="10.90.90.55")
+        pkt = Ether(src=surveillance, dst="FF:FF:FF:FF:FF:FF") / IP(dst="10.90.90.90", src="10.90.90.55")
         # Dot1Q(vlan=2) / \
 
         # print(pkt.show())
@@ -63,8 +53,7 @@ def surveillance():
 
 # surveillance()
 
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     # fdb_table()
     # lldp_med()
     surveillance()

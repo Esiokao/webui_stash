@@ -1,15 +1,11 @@
 # test_37_system_log_server.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("system_log_server.add_system_log_server")
 class TestAddSystemLogServer:
-
     def test_check_header(self, system_log_server_page):
         result = system_log_server_page.get_page_header_text()
         expected_val = "System Log Server"
@@ -104,7 +100,6 @@ class TestAddSystemLogServer:
 
 @allure.title("system_log_server.system_log_server_list")
 class TestSystemLogServerList:
-
     def test_check_system_log_server_list_header(self, system_log_server_page):
         result = system_log_server_page.get_system_log_server_list_header_text()
         expected_val = "System Log Server List"

@@ -1,8 +1,7 @@
 # pages/SNMPHostTable.py
 from selenium.webdriver.common.by import By
-from webui.pages.BasePage import BasePage
 
-from webui.utils.generate_screenshot_name import generate_screenshot_name
+from webui.pages.BasePage import BasePage
 
 
 class SNMPHostTablePage(BasePage):
@@ -19,9 +18,7 @@ class SNMPHostTablePage(BasePage):
         self.init()
 
     def init(self):
-        SYSTEM_MENU_LOCATOR = (
-            By.CSS_SELECTOR,
-            ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
+        SYSTEM_MENU_LOCATOR = (By.CSS_SELECTOR, ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
         SNMP_SETTINGS_MENU_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > li > ul > div:nth-child(11) > li > div > span:nth-child(4)")
         SNMP_HOST_TABLE_MENU_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > li > ul > div:nth-child(11) > li > ul > div:nth-child(6) > a > li > span")
         self.find_element_if_present(SYSTEM_MENU_LOCATOR).click()
@@ -33,11 +30,11 @@ class SNMPHostTablePage(BasePage):
     def get_page_header_text(self):
         PAGE_HEADER_LOCATOR = (By.CSS_SELECTOR, "#app > div > div > section > div > section > div > div")
         return self.find_element_then_get_text(PAGE_HEADER_LOCATOR)
-    
+
     def get_snmp_host_table_tier2_header_text(self):
         SNMP_HOST_TABLE_TIER2_HEADER_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > legend")
         return self.find_element_then_get_text(SNMP_HOST_TABLE_TIER2_HEADER_LOCATOR)
-    
+
     def get_host_ip_address_title_and_v4_value_v6_value(self):
         title_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td > span")
         ipv6_locator = (By.CSS_SELECTOR, "#IPv6 > input")
@@ -63,7 +60,7 @@ class SNMPHostTablePage(BasePage):
     def get_v6_mode_option_text(self):
         v6_mode_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr:nth-child(2) > td:nth-child(2)")
         return self.find_element_then_get_text(v6_mode_locator)
-        
+
     def get_checked_v4_mode_option(self):
         v4_mode_locator = (By.CSS_SELECTOR, "#IPv4Radio")
         return self.find_checkbox_checked(v4_mode_locator)
@@ -71,7 +68,7 @@ class SNMPHostTablePage(BasePage):
     def get_checked_v6_mode_option(self):
         v6_mode_locator = (By.CSS_SELECTOR, "#IPv6Radio")
         return self.find_checkbox_checked(v6_mode_locator)
-        
+
     def get_snmp_version_title_and_value(self):
         SNMP_VERSION_TITLE_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr:nth-child(3) > td > span")
         SNMP_VERSION_VALUE_LOCATOR = (By.CSS_SELECTOR, "#SNMPVersion")
@@ -85,15 +82,15 @@ class SNMPHostTablePage(BasePage):
         title = self.find_element_then_get_text(COMMUNITY_STRING_SNMPV3_USER_NAME_TITLE_LOCATOR)
         value = self.find_input_value(COMMUNITY_STRING_SNMPV3_USER_NAME_VALUE_LOCATOR)
         return title, value
-        
+
     def get_button_text(self):
         BUTTON_TEXT_LOCATOR = (By.CSS_SELECTOR, "#Apply")
         return self.find_input_value(BUTTON_TEXT_LOCATOR)
-    
+
     def get_total_entries_title(self):
         TOTAL_ENTRIES_TITLE_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > div > table > tr > td > span")
         return self.find_element_then_get_text(TOTAL_ENTRIES_TITLE_LOCATOR)
-    
+
     def get_table_title(self):
         TABLE_TITLE_LOCATOR = (By.CSS_SELECTOR, ".has-gutter")
         cells_class_name = "cell"
@@ -102,7 +99,6 @@ class SNMPHostTablePage(BasePage):
     def get_table_default_is_empty(self):
         # span
         table_locator = (By.CSS_SELECTOR, ".table")
-        expected_string = '< < Table is empty > >'
+        expected_string = "< < Table is empty > >"
 
         return self.text_is_existed_within(table_locator, expected_string)
-

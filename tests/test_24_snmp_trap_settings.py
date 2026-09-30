@@ -1,15 +1,11 @@
 # test_24_snmp_trap_settings.py
 
+
 import allure
-import pytest
-import asyncio
-import os
-from webui.utils.all_exist_in_order import all_exist_in_order
 
 
 @allure.title("snmp_trap_settings.trap_settings")
 class TestSNMPTrapSettings:
-
     def test_check_header(self, snmp_trap_settings_page):
         result = snmp_trap_settings_page.get_page_header_text()
         expected_val = "SNMP Trap Settings"
@@ -183,7 +179,6 @@ class TestSNMPTrapSettings:
 
 @allure.title("snmp_trap_settings.snmp_link_change_trap_port")
 class TestSnmpLinkChangeTrapPort:
-
     def test_check_snmp_link_change_trap_port_table_header(self, snmp_trap_settings_page):
         result = snmp_trap_settings_page.get_snmp_link_change_trap_port_table_header()
         expected_val = "Snmp LinkChange Trap Port"
@@ -223,7 +218,6 @@ class TestSnmpLinkChangeTrapPort:
 
 @allure.title("snmp_trap_settings.snmp_sending_trap_port")
 class TestSnmpSendingTrapPort:
-
     def test_check_snmp_sending_trap_port_table_header(self, snmp_trap_settings_page):
         result = snmp_trap_settings_page.get_snmp_sending_trap_port_table_header()
         expected_val = "Snmp Sending Trap Port"

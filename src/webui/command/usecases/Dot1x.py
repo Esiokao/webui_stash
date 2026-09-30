@@ -1,6 +1,7 @@
+from collections import namedtuple
+
 from webui.command.commands.Dot1xCommand import Dot1xCommand
 from webui.command.Invokers.TestInvoker import TestInvoker
-from collections import namedtuple
 
 
 def run(crt_env):
@@ -23,6 +24,5 @@ def run(crt_env):
 
         return True
 
-    except Exception as e:
-
+    except Exception:
         return False

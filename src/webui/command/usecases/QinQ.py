@@ -8,13 +8,9 @@ def run(crtEnv):
     try:
         qinQCommand = QinQCommand(crtEnv)
 
-        replaceVidLists = [
-            {'action': 'replace', 'svid': str(i + 1), 'cvid': str(i + 1), 'priority': str(random.randint(1, 7))} for i
-            in range(1, 1000)]
+        replaceVidLists = [{"action": "replace", "svid": str(i + 1), "cvid": str(i + 1), "priority": str(random.randint(1, 7))} for i in range(1, 1000)]
 
-        actionVidLists = [
-            {'action': 'add', 'svid': str(i + 1), 'cvid': str(i + 1), 'priority': str(random.randint(1, 7))} for i in
-            range(1001, 2000)]
+        actionVidLists = [{"action": "add", "svid": str(i + 1), "cvid": str(i + 1), "priority": str(random.randint(1, 7))} for i in range(1001, 2000)]
 
         qinQCommand.addVlanTranslationCVID(replaceVidLists)
 
@@ -28,6 +24,5 @@ def run(crtEnv):
 
         return True
 
-    except Exception as e:
-
+    except Exception:
         return False

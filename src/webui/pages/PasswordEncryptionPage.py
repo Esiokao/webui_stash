@@ -3,8 +3,6 @@ from selenium.webdriver.common.by import By
 
 from webui.pages.BasePage import BasePage
 
-from webui.utils.generate_screenshot_name import generate_screenshot_name
-
 
 class PasswordEncryptionPage(BasePage):
     def __init__(self, driver, base_url):
@@ -20,9 +18,7 @@ class PasswordEncryptionPage(BasePage):
         self.init()
 
     def init(self):
-        system_menu_locator = (
-            By.CSS_SELECTOR,
-            ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
+        system_menu_locator = (By.CSS_SELECTOR, ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
         WEB_SETTINGS_menu_locator = (By.CSS_SELECTOR, ".is-opened > .el-menu > .menu-wrapper:nth-child(18) span")
 
         self.find_element_if_present(system_menu_locator).click()
@@ -42,17 +38,20 @@ class PasswordEncryptionPage(BasePage):
         get_password_encryption_title_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td > span")
 
         return self.find_element_then_get_text(get_password_encryption_title_locator)
-    
+
     def get_password_encryption_option_one_text(self):
         get_password_encryption_option_one_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td:nth-child(2) > div > span > label")
 
         return self.find_element_then_get_text(get_password_encryption_option_one_locator)
-    
+
     def get_password_encryption_option_two_text(self):
-        get_password_encryption_option_two_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td:nth-child(2) > div > span:nth-child(2) > label")
+        get_password_encryption_option_two_locator = (
+            By.CSS_SELECTOR,
+            "div:nth-child(2) > fieldset > table > tr > td:nth-child(2) > div > span:nth-child(2) > label",
+        )
 
         return self.find_element_then_get_text(get_password_encryption_option_two_locator)
-    
+
     def get_checked_password_encryption_option(self):
         get_checked_password_encryption_option_locator = (By.CSS_SELECTOR, ".sx-section > fieldset > table > tr:nth-child(1) > td:nth-child(2) > div")
         target_div = self.find_element_if_present(get_checked_password_encryption_option_locator)
@@ -60,9 +59,8 @@ class PasswordEncryptionPage(BasePage):
         text = self.find_selected_input_label_text(selected_input)
 
         return text
-    
+
     def get_password_encryption_apply_button_text(self):
         get_password_encryption_apply_button_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td:nth-child(3) > input")
-        
-        return self.find_input_value(get_password_encryption_apply_button_locator)
 
+        return self.find_input_value(get_password_encryption_apply_button_locator)

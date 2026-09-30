@@ -1,15 +1,11 @@
 # test_40_ieee802.3az_eee_settings.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("ieee802.3az_eee_settings")
 class TestIEEE8023azEEEsettings:
-
     def test_check_header(self, ieee802_3az_eee_settings_page):
         result = ieee802_3az_eee_settings_page.get_page_header_text()
         expected_val = "IEEE802.3az EEE settings"

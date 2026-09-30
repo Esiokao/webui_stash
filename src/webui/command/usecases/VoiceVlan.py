@@ -7,7 +7,7 @@ def run(crtEnv):
     try:
         voice_vlan_command = VoiceVlanCommand(crtEnv)
 
-        ouiLists = [{'macAddr': random_mac()} for _ in range(10000)]
+        ouiLists = [{"macAddr": random_mac()} for _ in range(10000)]
 
         voice_vlan_command.addMultipleOui(ouiLists)
 
@@ -18,6 +18,5 @@ def run(crtEnv):
         testInvoker.run()
 
         return True
-    except Exception as e:
-
+    except Exception:
         return False

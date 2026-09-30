@@ -1,8 +1,8 @@
-from scapy.all import *
-import scapy.contrib.igmp
-from scapy.contrib.igmpv3 import IGMPv3, IGMPv3mq, IGMP, IGMPv3gr
-from scapy.contrib.igmpv3 import IGMPv3mr
 import time
+
+import scapy.contrib.igmp
+from scapy.all import *
+from scapy.contrib.igmpv3 import IGMPv3, IGMPv3gr, IGMPv3mr
 
 
 def loopDecor(times):
@@ -21,15 +21,13 @@ def loopDecor(times):
 @loopDecor(times=500)
 def igmpv2():
 
-    #configs
-    interfaceName = 'eth1'
+    # configs
+    interfaceName = "eth1"
     mac_src = "F0:7D:68:00:00:0e"
     mac_dst = "F0:7D:68:00:00:aa"
     randIP = ".".join(str(random.randint(0, 255)) for _ in range(4))
 
-    pkt = Ether(src=mac_src, dst=mac_dst) / \
-            IP(dst='10.90.90.1', src='239.255.255.250', tos=0xc0) / \
-                scapy.contrib.igmp.IGMP()
+    pkt = Ether(src=mac_src, dst=mac_dst) / IP(dst="10.90.90.1", src="239.255.255.250", tos=0xC0) / scapy.contrib.igmp.IGMP()
 
     pkt.show()
     sendp(pkt, count=4, iface="eth1")
@@ -58,17 +56,22 @@ def igmpv2():
 @loopDecor(times=1)
 def igmpv3():
     import random
+
     randIP = ".".join(str(random.randint(0, 255)) for _ in range(4))
     # susIP = '240.106.219.250'
     # susIP2 = '241.118.91.223'
     # dIP = '240.87.87.87'
     # okIP = '1.2.3.4'
-    p_join = Ether(dst='01:00:5e:00:00:16', src='00:0c:29:c8:31:8a') / Dot1Q(
-        vlan=1) / IP(src=randIP, dst='224.0.0.22',
-                     tos=0xc0) / IGMPv3() / IGMPv3mr(numgrp=1) / IGMPv3gr(
-                         rtype=4, maddr="224.0.1.2")
+    p_join = (
+        Ether(dst="01:00:5e:00:00:16", src="00:0c:29:c8:31:8a")
+        / Dot1Q(vlan=1)
+        / IP(src=randIP, dst="224.0.0.22", tos=0xC0)
+        / IGMPv3()
+        / IGMPv3mr(numgrp=1)
+        / IGMPv3gr(rtype=4, maddr="224.0.1.2")
+    )
     p_join.show()
-    sendp(p_join, count=1, iface='eth1')
+    sendp(p_join, count=1, iface="eth1")
 
 
 if __name__ == "__main__":

@@ -1,15 +1,11 @@
 # test_12_peripheral_settings.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("peripheral_settings.fan_settings")
 class TestFanSettings:
-
     def test_check_header(self, peripheral_settings_page):
         result = peripheral_settings_page.get_page_header_text()
         expected_val = "Peripheral Settings"
@@ -63,7 +59,6 @@ class TestFanSettings:
 
 @allure.title("peripheral_settings.environment_temperature_settings")
 class TestEnvironmentTemperatureSettings:
-
     def test_check_environment_temperature_settings_tier2_header(self, peripheral_settings_page):
         result = peripheral_settings_page.get_environment_temperature_settings_tier2_header_text()
         expected_val = "Environment Temperature Settings"

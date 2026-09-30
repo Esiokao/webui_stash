@@ -1,15 +1,11 @@
 # test_25_user_accounts.py
 
+
 import allure
-import pytest
-import asyncio
-import os
-from webui.utils.all_exist_in_order import all_exist_in_order
 
 
 @allure.title("user_accounts")
 class TestUserAccounts:
-
     def test_check_header(self, user_accounts_page):
         result = user_accounts_page.get_page_header_text()
         expected_val = "User Accounts"

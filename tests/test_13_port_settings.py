@@ -1,15 +1,11 @@
 # test_13_port_settings.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("port_settings")
 class TestPortSettings:
-
     def test_check_header(self, port_settings_page):
         result = port_settings_page.get_page_header_text()
         expected_val = "Port Settings"

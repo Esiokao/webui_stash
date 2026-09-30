@@ -1,6 +1,7 @@
-import re
-import os
 import argparse
+import os
+import re
+
 
 def extract_arguments(input_file, output_file):
     try:
@@ -27,10 +28,11 @@ def extract_arguments(input_file, output_file):
     except Exception as e:
         print(f"發生錯誤：{e}")
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="從 Python 代碼中提取 find_element() 內的內容")
     parser.add_argument("-f", "--file", required=True, help="輸入的 Python 檔案")
     parser.add_argument("-o", "--output", default="extract_locators/selectors.txt", help="輸出檔案 (預設為 extract_locators/selectors.txt)")
-    
+
     args = parser.parse_args()
     extract_arguments(args.file, args.output)

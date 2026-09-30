@@ -1,15 +1,11 @@
 # test_35_twamp_server.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("twamp_server")
 class TestTwampServer:
-
     def test_check_header(self, twamp_server_page):
         result = twamp_server_page.get_page_header_text()
         expected_val = "TWAMP Server"

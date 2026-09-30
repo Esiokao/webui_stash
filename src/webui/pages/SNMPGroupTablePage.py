@@ -1,8 +1,7 @@
 # pages/SNMPGroupTablePage.py
 from selenium.webdriver.common.by import By
-from webui.pages.BasePage import BasePage
 
-from webui.utils.generate_screenshot_name import generate_screenshot_name
+from webui.pages.BasePage import BasePage
 
 
 class SNMPGroupTablePage(BasePage):
@@ -19,9 +18,7 @@ class SNMPGroupTablePage(BasePage):
         self.init()
 
     def init(self):
-        SYSTEM_MENU_LOCATOR = (
-            By.CSS_SELECTOR,
-            ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
+        SYSTEM_MENU_LOCATOR = (By.CSS_SELECTOR, ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
         SNMP_SETTINGS_MENU_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > li > ul > div:nth-child(11) > li > div > span:nth-child(4)")
         SNMP_GROUP_TABLE_MENU_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > li > ul > div:nth-child(11) > li > ul > div:nth-child(3) > a > li > span")
         self.find_element_if_present(SYSTEM_MENU_LOCATOR).click()
@@ -33,11 +30,11 @@ class SNMPGroupTablePage(BasePage):
     def get_page_header_text(self):
         PAGE_HEADER_LOCATOR = (By.CSS_SELECTOR, "#app > div > div > section > div > section > div > div")
         return self.find_element_then_get_text(PAGE_HEADER_LOCATOR)
-    
+
     def get_snmp_group_table_tier2_header_text(self):
         SNMP_GROUP_TABLE_TIER2_HEADER_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > legend")
         return self.find_element_then_get_text(SNMP_GROUP_TABLE_TIER2_HEADER_LOCATOR)
-    
+
     def get_group_name_title_and_value(self):
         GROUP_NAME_TITLE_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td > span")
         GROUP_NAME_VALUE_LOCATOR = (By.CSS_SELECTOR, "#GroupName")
@@ -92,7 +89,7 @@ class SNMPGroupTablePage(BasePage):
         TABLE_TITLE_LOCATOR = (By.CSS_SELECTOR, ".has-gutter")
         cells_class_name = "cell"
         return self.find_cells_value_within(TABLE_TITLE_LOCATOR, cells_class_name)
-        
+
     def get_readonly_v1_table_value(self):
         TABLE_VALUE_LOCATOR = (By.CSS_SELECTOR, ".el-table__body-wrapper.is-scrolling-none > table > tbody > tr:nth-child(1)")
         cells_class_name = "cell"
@@ -110,7 +107,7 @@ class SNMPGroupTablePage(BasePage):
     def get_readonly_v2c_table_button_text(self):
         TABLE_BUTTON_LOCATOR = (By.CSS_SELECTOR, "#delete_1")
         return self.find_input_value(TABLE_BUTTON_LOCATOR)
-    
+
     def get_read_write_v1_table_value(self):
         TABLE_VALUE_LOCATOR = (By.CSS_SELECTOR, ".el-table__body-wrapper.is-scrolling-none > table > tbody > tr:nth-child(3)")
         cells_class_name = "cell"
@@ -128,27 +125,27 @@ class SNMPGroupTablePage(BasePage):
     def get_read_write_v2c_table_button_text(self):
         TABLE_BUTTON_LOCATOR = (By.CSS_SELECTOR, "#delete_3")
         return self.find_input_value(TABLE_BUTTON_LOCATOR)
-        
+
     def get_group_table_page_text(self):
         GROUP_TABLE_PAGE_TEXT_LOCATOR = (By.CSS_SELECTOR, ".sx-section .sx-page > span.counter")
         return self.find_element_then_get_text(GROUP_TABLE_PAGE_TEXT_LOCATOR)
-    
+
     def get_group_table_page_button1_text(self):
         GROUP_TABLE_PAGE_BUTTON1_LOCATOR = (By.CSS_SELECTOR, ".sx-section .sx-page > a.firstPage.isdisabled-btn")
         return self.find_element_then_get_text(GROUP_TABLE_PAGE_BUTTON1_LOCATOR)
-    
+
     def get_group_table_page_button2_text(self):
         GROUP_TABLE_PAGE_BUTTON2_LOCATOR = (By.CSS_SELECTOR, ".sx-section .sx-page > a.prevPage.isdisabled-btn")
         return self.find_element_then_get_text(GROUP_TABLE_PAGE_BUTTON2_LOCATOR)
-    
+
     def get_group_table_page_button3_text(self):
         GROUP_TABLE_PAGE_BUTTON3_LOCATOR = (By.CSS_SELECTOR, ".sx-section .sx-page > span.pageNum.slected")
         return self.find_element_then_get_text(GROUP_TABLE_PAGE_BUTTON3_LOCATOR)
-    
+
     def get_group_table_page_button4_text(self):
         GROUP_TABLE_PAGE_BUTTON4_LOCATOR = (By.CSS_SELECTOR, ".sx-section .sx-page > a.nextPage.isdisabled-btn")
         return self.find_element_then_get_text(GROUP_TABLE_PAGE_BUTTON4_LOCATOR)
-    
+
     def get_group_table_page_button5_text(self):
         GROUP_TABLE_PAGE_BUTTON5_LOCATOR = (By.CSS_SELECTOR, ".sx-section .sx-page > a.lastPage.isdisabled-btn")
         return self.find_element_then_get_text(GROUP_TABLE_PAGE_BUTTON5_LOCATOR)
@@ -160,4 +157,3 @@ class SNMPGroupTablePage(BasePage):
     def get_group_table_page_button6_text(self):
         GROUP_TABLE_PAGE_BUTTON6_LOCATOR = (By.CSS_SELECTOR, ".sx-section .sx-page > input.goButton")
         return self.find_input_value(GROUP_TABLE_PAGE_BUTTON6_LOCATOR)
-

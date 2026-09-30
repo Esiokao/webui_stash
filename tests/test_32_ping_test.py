@@ -1,15 +1,11 @@
 # test_32_ping_test.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("ping_test")
 class TestPingTest:
-
     def test_check_header(self, ping_test_page):
         result = ping_test_page.get_page_header_text()
         expected_val = "Ping Test"

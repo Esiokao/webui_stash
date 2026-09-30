@@ -3,8 +3,6 @@ from selenium.webdriver.common.by import By
 
 from webui.pages.BasePage import BasePage
 
-from webui.utils.generate_screenshot_name import generate_screenshot_name
-
 
 class WebSettingsPage(BasePage):
     def __init__(self, driver, base_url):
@@ -20,9 +18,7 @@ class WebSettingsPage(BasePage):
         self.init()
 
     def init(self):
-        system_menu_locator = (
-            By.CSS_SELECTOR,
-            ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
+        system_menu_locator = (By.CSS_SELECTOR, ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
         WEB_SETTINGS_menu_locator = (By.CSS_SELECTOR, ".is-opened > .el-menu > .menu-wrapper:nth-child(16) span")
 
         self.find_element_if_present(system_menu_locator).click()
@@ -42,17 +38,17 @@ class WebSettingsPage(BasePage):
         get_web_state_title_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td > span")
 
         return self.find_element_then_get_text(get_web_state_title_locator)
-    
+
     def get_web_state_option_one_text(self):
         get_web_state_option_one_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td:nth-child(2) > div > span > label")
 
         return self.find_element_then_get_text(get_web_state_option_one_locator)
-    
+
     def get_web_state_option_two_text(self):
         get_web_state_option_two_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td:nth-child(2) > div > span:nth-child(2) > label")
 
         return self.find_element_then_get_text(get_web_state_option_two_locator)
-    
+
     def get_checked_web_state_option(self):
         get_checked_web_state_option_locator = (By.CSS_SELECTOR, ".sx-section > fieldset > table > tr:nth-child(1) > td:nth-child(2) > div")
         target_div = self.find_element_if_present(get_checked_web_state_option_locator)
@@ -68,8 +64,7 @@ class WebSettingsPage(BasePage):
         title = self.find_element_then_get_text(get_port_title_locator)
         value = self.find_input_value(get_port_value_locator)
         return title, value
-    
+
     def get_web_settings_apply_button_text(self):
         get_web_settings_apply_button_locator = (By.CSS_SELECTOR, "#Apply")
         return self.find_input_value(get_web_settings_apply_button_locator)
-

@@ -1,9 +1,12 @@
 # pages/LoginPage.py
 import time
+
 from selenium.webdriver.common.by import By
-from webui.pages.BasePage import BasePage
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+from webui.pages.BasePage import BasePage
+
 
 class LoginPage(BasePage):
     # Page element locators
@@ -88,7 +91,7 @@ class LoginPage(BasePage):
                 print("Login successful")
                 LoginPage.set_login_status(True)
                 return True
-            
+
             print("Login unsuccessful")
             LoginPage.set_login_status(False)
             return False
@@ -96,7 +99,6 @@ class LoginPage(BasePage):
             LoginPage.set_login_status(False)
             print("Error during login status check")
             return False
-
 
     def do_login(self, username, password, timeout=10):
         """
@@ -107,7 +109,7 @@ class LoginPage(BasePage):
         max_retry = 1
 
         while count <= max_retry:
-            print('Trying to Login')
+            print("Trying to Login")
 
             if self.get_login_status():
                 self.open()
@@ -118,7 +120,7 @@ class LoginPage(BasePage):
             self.open()
             self.switch_to_main_frame()
             self.login(username, password)
-            time.sleep(2.5) # force to wait iframe loading
+            time.sleep(2.5)  # force to wait iframe loading
             # 加入短暫等待，確認登入是否成功
             try:
                 WebDriverWait(self.driver, timeout).until(lambda d: self.is_login_successful())

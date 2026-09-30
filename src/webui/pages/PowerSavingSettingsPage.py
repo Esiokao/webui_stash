@@ -1,10 +1,8 @@
 # pages/PowerSavingSettingsPage.py
+
 from selenium.webdriver.common.by import By
-import re
 
 from webui.pages.BasePage import BasePage
-
-from webui.utils.generate_screenshot_name import generate_screenshot_name
 
 
 class PowerSavingSettingsPage(BasePage):
@@ -21,9 +19,7 @@ class PowerSavingSettingsPage(BasePage):
         self.init()
 
     def init(self):
-        system_menu_locator = (
-            By.CSS_SELECTOR,
-            ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
+        system_menu_locator = (By.CSS_SELECTOR, ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
         POWER_SAVING_menu_locator = (By.CSS_SELECTOR, ".is-opened > .el-menu > .menu-wrapper:nth-child(25) span")
 
         self.find_element_if_present(system_menu_locator).click()
@@ -38,7 +34,7 @@ class PowerSavingSettingsPage(BasePage):
         get_global_settings_tier2_header_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > legend")
 
         return self.find_element_then_get_text(get_global_settings_tier2_header_locator)
-    
+
     def get_function_version_title_and_value(self):
         get_function_version_title_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td > span")
         get_function_version_value_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td:nth-child(2) > span")
@@ -47,19 +43,25 @@ class PowerSavingSettingsPage(BasePage):
         value = self.find_element_then_get_text(get_function_version_value_locator)
 
         return title, value
-    
+
     def get_link_status_detection_version_title(self):
         get_link_status_detection_version_title_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr:nth-child(2) > td > span")
-        
+
         return self.find_element_then_get_text(get_link_status_detection_version_title_locator)
-    
+
     def get_link_status_detection_version_option_one_text(self):
-        get_link_status_detection_version_option_one_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr:nth-child(2) > td:nth-child(2) > div > span > label")
+        get_link_status_detection_version_option_one_locator = (
+            By.CSS_SELECTOR,
+            "div:nth-child(2) > fieldset > table > tr:nth-child(2) > td:nth-child(2) > div > span > label",
+        )
 
         return self.find_element_then_get_text(get_link_status_detection_version_option_one_locator)
-    
+
     def get_link_status_detection_version_option_two_text(self):
-        get_link_status_detection_version_option_two_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr:nth-child(2) > td:nth-child(2) > div > span:nth-child(2) > label")
+        get_link_status_detection_version_option_two_locator = (
+            By.CSS_SELECTOR,
+            "div:nth-child(2) > fieldset > table > tr:nth-child(2) > td:nth-child(2) > div > span:nth-child(2) > label",
+        )
 
         return self.find_element_then_get_text(get_link_status_detection_version_option_two_locator)
 
@@ -72,7 +74,7 @@ class PowerSavingSettingsPage(BasePage):
 
     def get_Global_Settings_button_text(self):
         Global_Settings_button_locator = (By.CSS_SELECTOR, "#onApply1")
-        
+
         return self.find_input_value(Global_Settings_button_locator)
 
     def get_advanced_power_saving_settings_title(self):
@@ -147,23 +149,25 @@ class PowerSavingSettingsPage(BasePage):
         return self.find_cells_value_within(table_title_locator, cells_class_name)
 
     def get_led_shut_off_table_value(self):
-        led_shut_off_table_value_locator = (By.CSS_SELECTOR, "div:nth-child(4) > fieldset > div > div > div.el-table__body-wrapper.is-scrolling-none > table > tbody > tr:nth-child(1)")
+        led_shut_off_table_value_locator = (
+            By.CSS_SELECTOR,
+            "div:nth-child(4) > fieldset > div > div > div.el-table__body-wrapper.is-scrolling-none > table > tbody > tr:nth-child(1)",
+        )
         cells_class_name = "cell"
         return self.find_cells_value_within(led_shut_off_table_value_locator, cells_class_name)
 
     def get_port_shut_off_table_value(self):
-        port_shut_off_table_value_locator = (By.CSS_SELECTOR, "div:nth-child(4) > fieldset > div > div > div.el-table__body-wrapper.is-scrolling-none > table > tbody > tr.el-table__row.el-table__row--striped")
+        port_shut_off_table_value_locator = (
+            By.CSS_SELECTOR,
+            "div:nth-child(4) > fieldset > div > div > div.el-table__body-wrapper.is-scrolling-none > table > tbody > tr.el-table__row.el-table__row--striped",
+        )
         cells_class_name = "cell"
         return self.find_cells_value_within(port_shut_off_table_value_locator, cells_class_name)
-    
+
     def get_system_hibernation_table_value(self):
-        system_hibernation_table_value_locator = (By.CSS_SELECTOR, "div:nth-child(4) > fieldset > div > div > div.el-table__body-wrapper.is-scrolling-none > table > tbody > tr:nth-child(3)")
+        system_hibernation_table_value_locator = (
+            By.CSS_SELECTOR,
+            "div:nth-child(4) > fieldset > div > div > div.el-table__body-wrapper.is-scrolling-none > table > tbody > tr:nth-child(3)",
+        )
         cells_class_name = "cell"
         return self.find_cells_value_within(system_hibernation_table_value_locator, cells_class_name)
-    
-    
-
-    
-
-
-

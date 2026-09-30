@@ -1,5 +1,6 @@
-from scapy.all import *
 import math
+
+from scapy.all import *
 
 for byte2 in range(5):
     for byte1 in range(128):
@@ -10,7 +11,7 @@ for byte2 in range(5):
         dst_str = "33:33:00:" + byte3_str + ":" + byte2_str + ":" + byte1_str
         mgrp_addr_str = "ff13::" + byte2_str + byte1_str
         mgrp_addr_str_2 = "FF05::" + mgrp_str
-        eth = Ether(dst=dst_str, src="00:11:22:33:44:55", type=0x86dd)
+        eth = Ether(dst=dst_str, src="00:11:22:33:44:55", type=0x86DD)
         ipv6_hdr = IPv6(src="fe80::dead:bee5", dst=mgrp_addr_str, hlim=1)
         hbh = IPv6ExtHdrHopByHop(options=RouterAlert())
         mld_report = ICMPv6MLReport(mladdr=mgrp_addr_str_2)

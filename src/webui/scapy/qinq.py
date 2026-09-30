@@ -1,11 +1,11 @@
-from scapy.all import Ether, Dot1Q, sendp
+from scapy.all import Dot1Q, Ether, sendp
 
 # 構造 Q-in-Q 封包
 packet = (
-    Ether(dst="ff:ff:ff:ff:ff:ff", src="00:11:22:33:44:55") /  # 乙太網頭部
-    Dot1Q(vlan=100) /                                          # 外層 VLAN 標籤
-    Dot1Q(vlan=200) /                                          # 內層 VLAN 標籤
-    b"Hello, Q-in-Q!"                                          # 負載
+    Ether(dst="ff:ff:ff:ff:ff:ff", src="00:11:22:33:44:55")  # 乙太網頭部
+    / Dot1Q(vlan=100)  # 外層 VLAN 標籤
+    / Dot1Q(vlan=200)  # 內層 VLAN 標籤
+    / b"Hello, Q-in-Q!"  # 負載
 )
 
 # 顯示封包結構

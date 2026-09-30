@@ -3,8 +3,6 @@ from selenium.webdriver.common.by import By
 
 from webui.pages.BasePage import BasePage
 
-from webui.utils.generate_screenshot_name import generate_screenshot_name
-
 
 class TwampServerPage(BasePage):
     def __init__(self, driver, base_url):
@@ -20,9 +18,7 @@ class TwampServerPage(BasePage):
         self.init()
 
     def init(self):
-        system_menu_locator = (
-            By.CSS_SELECTOR,
-            ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
+        system_menu_locator = (By.CSS_SELECTOR, ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
         TWAMP_SERVER_menu_locator = (By.CSS_SELECTOR, ".is-opened > .el-menu > .menu-wrapper:nth-child(22) span")
 
         self.find_element_if_present(system_menu_locator).click()
@@ -45,7 +41,7 @@ class TwampServerPage(BasePage):
         value = self.find_selected_value_within(state_value_locator)
 
         return title, value
-    
+
     def get_protocol_title_and_value(self):
         protocol_title_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr:nth-child(2) > td > span")
         protocol_value_locator = (By.CSS_SELECTOR, "#Protocol")
@@ -53,7 +49,7 @@ class TwampServerPage(BasePage):
         value = self.find_selected_value_within(protocol_value_locator)
 
         return title, value
-    
+
     def get_age_time_title_and_value(self):
         age_time_title_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr:nth-child(3) > td > span")
         age_time_value_locator = (By.CSS_SELECTOR, "#AgeTime")
@@ -69,7 +65,7 @@ class TwampServerPage(BasePage):
         value = self.find_selected_value_within(auth_mode_value_locator)
 
         return title, value
-    
+
     def get_minimum_udp_port_title_and_value(self):
         minimum_udp_port_title_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr:nth-child(2) > td:nth-child(3) > span")
         minimum_udp_port_value_locator = (By.CSS_SELECTOR, "#MinimumUDPPort")
@@ -77,13 +73,13 @@ class TwampServerPage(BasePage):
         value = self.find_input_value(minimum_udp_port_value_locator)
 
         return title, value
-    
+
     def get_twamp_server_button_text(self):
         twamp_server_button_locator = (By.CSS_SELECTOR, "#Apply")
         button_text = self.find_input_value(twamp_server_button_locator)
 
         return button_text
-    
+
     def get_twamp_server_table_title(self):
         twamp_server_table_title_locator = (By.CSS_SELECTOR, ".has-gutter")
         cells_class_name = "cell"
@@ -94,15 +90,12 @@ class TwampServerPage(BasePage):
     def get_table_default_is_empty(self):
         # span
         table_locator = (By.CSS_SELECTOR, ".table")
-        expected_string = '< < Table is empty > >'
+        expected_string = "< < Table is empty > >"
 
         return self.text_is_existed_within(table_locator, expected_string)
-    
+
     def get_refresh_button_text(self):
         refresh_button_locator = (By.CSS_SELECTOR, "#Refresh")
         button_text = self.find_input_value(refresh_button_locator)
 
         return button_text
-    
-    
-    

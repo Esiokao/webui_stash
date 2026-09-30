@@ -1,14 +1,16 @@
-import serial
 import asyncio
-import threading
 import sys
+import threading
 import time
-from colorama import Fore, init
 from collections import deque  # ✅ used for fixed-size response buffer
+
+import serial
+from colorama import Fore, init
 from prompt_toolkit import PromptSession
 from prompt_toolkit.key_binding import KeyBindings
 
 init(autoreset=True)
+
 
 class SerialEnv:
     # Adapter to mimic SecureCRT environment
@@ -28,21 +30,21 @@ class SerialEnv:
         # Async prompt input & key binding
         self.session = PromptSession()
         self.bindings = KeyBindings()
-        
+
         @self.bindings.add("tab")
         def _(event):
             """Send current input with \\t on Tab press."""
-            echo = False # dont
+            echo = False  # dont
             current_text = event.app.current_buffer.text
             self.send(current_text + "\t", echo)
 
         self.init_serial()
-        
+
         # 如果連線失敗，不繼續執行
         if self.serial is None:
             self.running = False
             return  # ⛔️ 停止 init，避免進入 read_thread
-        
+
         # Start background thread to read serial data
         self.read_thread = threading.Thread(target=self._read_serial, daemon=True)
         self.read_thread.start()
@@ -50,23 +52,20 @@ class SerialEnv:
     def init_serial(self):
         """Initialize serial connection."""
         try:
-            self.serial = serial.serial_for_url(
-                self.port, baudrate=self.baudrate, timeout=1
-            )
+            self.serial = serial.serial_for_url(self.port, baudrate=self.baudrate, timeout=1)
             print(f"✅ Serial connected on {self.port}, baud rate {self.baudrate} established")
         except Exception as e:
             print(f"❌ Serial connection failed: {e}")
             self.serial = None  # ⛔️ None
-    
 
     def send(self, data: str, echo: bool = True):
         """Send data over serial and immediately print it."""
         if self.serial:
-            byte_str = (data + '\n').encode() if data != '\n' else data.encode()
+            byte_str = (data + "\n").encode() if data != "\n" else data.encode()
             self.last_sent = data
             self.serial.write(byte_str)
             # mimic the user input behavior
-            if echo and data != '':
+            if echo and data != "":
                 sys.stdout.write(f"{Fore.RED}{data}\n")  # ✅ Echo sent command
             time.sleep(self.defer_time)
 
@@ -86,7 +85,7 @@ class SerialEnv:
         end_time = time.time() + timeout
 
         while time.time() < end_time:
-            combined = ''.join(self.buffer)
+            combined = "".join(self.buffer)
             if target in combined:
                 return target
             time.sleep(self.defer_time)
@@ -106,7 +105,6 @@ class SerialEnv:
                 decoded = data.decode(errors="ignore")
                 # to ignore same return string from the serial port
                 if decoded.strip() == self.last_sent.strip():
-
                     continue
 
                 self.last_received = decoded
@@ -129,7 +127,7 @@ class SerialEnv:
             self.serial.close()
         print("\n🔌 Serial closed")
 
-    # user input handler           
+    # user input handler
     async def user_input_loop(self):
         """Handle async user input from terminal with tab-completion support."""
         echo = False
@@ -146,8 +144,6 @@ class SerialEnv:
                 print("\n🚪 Exit by user interrupt")
                 self.close()
                 break
-            
-            
 
     def sleep(self, timeout_time: int):
         """Delay execution for a given duration in seconds."""

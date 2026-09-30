@@ -1,9 +1,9 @@
 # pages/IPInterfacePage.py
+from collections import namedtuple
+
 from selenium.webdriver.common.by import By
 
 from webui.pages.BasePage import BasePage
-from webui.utils.generate_screenshot_name import generate_screenshot_name
-from collections import namedtuple
 
 
 class IPInterfacePage(BasePage):
@@ -17,11 +17,8 @@ class IPInterfacePage(BasePage):
         self.url = base_url.rstrip("/")  # 確保 base_url 沒有多餘的斜杠
         self.next = False
 
-
     def init(self):
-        system_menu_locator = (
-            By.CSS_SELECTOR,
-            ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
+        system_menu_locator = (By.CSS_SELECTOR, ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
         firmware_information_menu_locator = (By.CSS_SELECTOR, ".is-opened > .el-menu > .menu-wrapper:nth-child(4) span")
 
         self.find_element_if_present(system_menu_locator).click()
@@ -43,7 +40,10 @@ class IPInterfacePage(BasePage):
         return self.find_element_then_get_text(config_one_locator)
 
     def get_ip_config_option_two_text(self):
-        config_two_locator = (By.CSS_SELECTOR, "#app > div > div > section > div > div > div:nth-child(2) > fieldset > table > tr > td > div > span:nth-child(2) > label")
+        config_two_locator = (
+            By.CSS_SELECTOR,
+            "#app > div > div > section > div > div > div:nth-child(2) > fieldset > table > tr > td > div > span:nth-child(2) > label",
+        )
         return self.find_element_then_get_text(config_two_locator)
 
     def get_checked_ip_mode_option(self):

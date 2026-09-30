@@ -1,5 +1,5 @@
-from webui.command.Invokers.TestInvoker import TestInvoker
 from webui.command.commands.ResetCommand import ResetCommand
+from webui.command.Invokers.TestInvoker import TestInvoker
 
 
 def run(crtEnv):
@@ -14,6 +14,5 @@ def run(crtEnv):
 
         return True
 
-    except Exception as e:
-
+    except Exception:
         return False

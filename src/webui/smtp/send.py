@@ -2,8 +2,8 @@ import smtplib
 from email.mime.text import MIMEText
 
 # server
-smtp_server = "localhost"  
-port = 1025                
+smtp_server = "localhost"
+port = 1025
 sender = "sender@example.com"
 receiver = "receiver@example.com"
 

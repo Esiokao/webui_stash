@@ -1,11 +1,7 @@
 # tests/test4_firmware_information.py
-import time
-import allure
-import sys
 import os
 
-from webui.utils.all_exist_in_order import all_exist_in_order
-from webui.mixins.TestUtils import ValueCheckMixins
+import allure
 
 
 @allure.title("Firmware Information")

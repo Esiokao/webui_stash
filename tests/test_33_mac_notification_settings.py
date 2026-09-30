@@ -1,15 +1,11 @@
 # test_33_mac_notification_settings.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("mac_notification_settings.mac_notification_global_settings")
 class TestMacNotificationGlobalSettings:
-
     def test_check_header(self, mac_notification_settings_page):
         result = mac_notification_settings_page.get_page_header_text()
         expected_val = "MAC Notification Settings"
@@ -71,7 +67,6 @@ class TestMacNotificationGlobalSettings:
 
 @allure.title("mac_notification_settings.mac_notification_port_settings")
 class TestMacNotificationPortSettings:
-
     def test_check_MAC_Notification_Port_Settings_Table_header(self, mac_notification_settings_page):
         result = mac_notification_settings_page.get_MAC_Notification_Port_Settings_Table_header_text()
         expected_val = "MAC Notification Port Settings"
@@ -111,7 +106,6 @@ class TestMacNotificationPortSettings:
 
 @allure.title("mac_notification_settings.MAC_Notification_Port_State_Table")
 class TestMacNotificationPortStateTable:
-
     def test_check_MAC_Notification_Port_State_Table_header(self, mac_notification_settings_page):
         result = mac_notification_settings_page.get_MAC_Notification_Port_State_Table_header_text()
         expected_val = "MAC Notification Port State Table"

@@ -1,8 +1,7 @@
 # pages/SystemLogServerPage.py
 from selenium.webdriver.common.by import By
-from webui.pages.BasePage import BasePage
 
-from webui.utils.generate_screenshot_name import generate_screenshot_name
+from webui.pages.BasePage import BasePage
 
 
 class SystemLogServerPage(BasePage):
@@ -19,9 +18,7 @@ class SystemLogServerPage(BasePage):
         self.init()
 
     def init(self):
-        SYSTEM_MENU_LOCATOR = (
-            By.CSS_SELECTOR,
-            ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
+        SYSTEM_MENU_LOCATOR = (By.CSS_SELECTOR, ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
         SYSTEM_LOG_SERVER_MENU_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > li > ul > div:nth-child(23) > li > div > span:nth-child(4)")
         SYSTEM_LOG_SERVER_LIST_MENU_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > li > ul > div:nth-child(23) > li > ul > div:nth-child(2) > a > li > span")
         self.find_element_if_present(SYSTEM_MENU_LOCATOR).click()
@@ -33,7 +30,7 @@ class SystemLogServerPage(BasePage):
     def get_page_header_text(self):
         PAGE_HEADER_LOCATOR = (By.CSS_SELECTOR, "#app > div > div > section > div > section > div > div")
         return self.find_element_then_get_text(PAGE_HEADER_LOCATOR)
-    
+
     def get_add_system_log_server_tier2_header_text(self):
         ADD_SYSTEM_LOG_SERVER_TIER2_HEADER_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > legend")
         return self.find_element_then_get_text(ADD_SYSTEM_LOG_SERVER_TIER2_HEADER_LOCATOR)
@@ -60,7 +57,7 @@ class SystemLogServerPage(BasePage):
 
         ipv4_addr = ".".join(ipv4_octets)
         return title, ipv4_addr
-    
+
     def get_server_ipv6_address_title_and_value(self):
         title_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr:nth-child(3) > td > span")
         ipv6_locator = (By.CSS_SELECTOR, "#ServerIPv6Address > input")
@@ -75,18 +72,18 @@ class SystemLogServerPage(BasePage):
     def get_checked_v6_mode_option(self):
         v6_mode_locator = (By.CSS_SELECTOR, "#IPv6Radio")
         return self.find_checkbox_checked(v6_mode_locator)
-    
+
     def get_domain_title_and_value(self):
         title_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr:nth-child(4) > td > span")
         value_locator = (By.CSS_SELECTOR, "#Domain")
         title = self.find_element_then_get_text(title_locator)
         value = self.find_input_value(value_locator)
         return title, value
-    
+
     def get_checked_domain_mode_option(self):
         domain_mode_locator = (By.XPATH, "/html/body/div[1]/div/div/section/div/section/div/div[2]/fieldset/table/tr[4]/td[1]/input")
         return self.find_checkbox_checked(domain_mode_locator)
-    
+
     def get_severity_title_and_value(self):
         title_locator = (By.CSS_SELECTOR, "div:nth-child(2) > fieldset > table > tr > td:nth-child(3) > span")
         value_locator = (By.CSS_SELECTOR, "#Severity")
@@ -135,8 +132,6 @@ class SystemLogServerPage(BasePage):
     def get_table_default_is_empty(self):
         # span
         table_locator = (By.CSS_SELECTOR, ".table")
-        expected_string = '< < Table is empty > >'
+        expected_string = "< < Table is empty > >"
 
         return self.text_is_existed_within(table_locator, expected_string)
-
-

@@ -1,8 +1,7 @@
 # pages/SerialPortSettingsPage.py
 from selenium.webdriver.common.by import By
-from webui.pages.BasePage import BasePage
 
-from webui.utils.generate_screenshot_name import generate_screenshot_name
+from webui.pages.BasePage import BasePage
 
 
 class SerialPortSettingsPage(BasePage):
@@ -18,11 +17,8 @@ class SerialPortSettingsPage(BasePage):
 
         self.init()
 
-
     def init(self):
-        SYSTEM_MENU_LOCATOR = (
-            By.CSS_SELECTOR,
-            ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
+        SYSTEM_MENU_LOCATOR = (By.CSS_SELECTOR, ".menu-wrapper:nth-child(2) > .el-submenuTitle > .el-submenu__title > .el-submenu__icon-arrow")
         SERIAL_PORT_SETTINGS_MENU_LOCATOR = (By.CSS_SELECTOR, ".is-opened > .el-menu > .menu-wrapper:nth-child(3) span")
 
         self.find_element_if_present(SYSTEM_MENU_LOCATOR).click()
@@ -71,7 +67,7 @@ class SerialPortSettingsPage(BasePage):
         return title, value
 
     def get_stop_bits(self):
-        stop_bits_title_locator =  (By.CSS_SELECTOR, ".sx-form > tr:nth-child(5) > td:nth-child(1) > span:nth-child(1)")
+        stop_bits_title_locator = (By.CSS_SELECTOR, ".sx-form > tr:nth-child(5) > td:nth-child(1) > span:nth-child(1)")
         stop_bits_value_locator = (By.CSS_SELECTOR, ".sx-form > tr:nth-child(5) > td:nth-child(2) > span:nth-child(1)")
         title = self.find_element_then_get_text(stop_bits_title_locator)
         value = self.find_element_then_get_text(stop_bits_value_locator)

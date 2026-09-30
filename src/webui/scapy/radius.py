@@ -1,9 +1,8 @@
 from scapy.all import *
-from scapy.layers.radius import RadiusAttribute, Radius
+from scapy.layers.radius import Radius, RadiusAttribute
 
 
-def send_radius_packet(dst_mac, src_mac, dst_ip, username, password,
-                       nas_ipaddr, message_type, interface):
+def send_radius_packet(dst_mac, src_mac, dst_ip, username, password, nas_ipaddr, message_type, interface):
     # 創建 Radius 屬性
     avp1 = RadiusAttribute(type="User-Name", value=username)
     avp2 = RadiusAttribute(type="User-Password", value=password)
@@ -13,13 +12,13 @@ def send_radius_packet(dst_mac, src_mac, dst_ip, username, password,
     radius_packet = Radius(
         code=message_type,
         # authenticator=RandString(16),  # 隨機生成 16 字節的 authenticator
-        authenticator='testing123',
-        id=RandByte())
+        authenticator="testing123",
+        id=RandByte(),
+    )
     radius_packet[Radius].attributes = [avp1, avp2]
 
     # 建立 Ethernet, IP 和 UDP 封包
-    eth_packet = Ether(dst=dst_mac, src=src_mac,
-                       type=0x0800)  # 以太網層，type=0x0800 表示 IP
+    eth_packet = Ether(dst=dst_mac, src=src_mac, type=0x0800)  # 以太網層，type=0x0800 表示 IP
     ip_packet = IP(dst=dst_ip)  # RADIUS 伺服器的目標 IP
     udp_packet = UDP(sport=RandShort(), dport=1812)  # 來源和目標端口
 
@@ -30,7 +29,7 @@ def send_radius_packet(dst_mac, src_mac, dst_ip, username, password,
     sendp(full_packet, iface=interface, verbose=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # for _ in range(1000):
     send_radius_packet(
         dst_mac="ff:ff:ff:ff:ff:ff",  # 目標 MAC 地址
@@ -39,6 +38,6 @@ if __name__ == '__main__':
         username="bob",
         password="hello",
         nas_ipaddr="127.0.1.1",
-        message_type=
-        "Access-Request",  # 可選：Access-Request, Access-Accept, Access-Reject, Accounting-Request
-        interface="eth1")
+        message_type="Access-Request",  # 可選：Access-Request, Access-Accept, Access-Reject, Accounting-Request
+        interface="eth1",
+    )

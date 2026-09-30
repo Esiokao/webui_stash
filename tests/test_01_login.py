@@ -1,9 +1,7 @@
 # tests/test_1_login.py
 
-from datetime import datetime
 
 import allure
-import pytest
 
 
 @allure.title("Login")

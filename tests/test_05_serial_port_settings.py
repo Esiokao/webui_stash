@@ -1,16 +1,10 @@
 # tests/test_5_serial_port_settings.py
-import time
-import allure
-import sys
-import os
 
-from webui.utils.all_exist_in_order import all_exist_in_order
-from webui.mixins.TestUtils import ValueCheckMixins
+import allure
 
 
 @allure.title("Serial Port Settings")
 class TestSerialPortSettings:
-
     def test_check_header_is_correct(self, serial_port_settings_page):
         res = serial_port_settings_page.get_page_header_text()
         expected_val = "Serial Port Settings"

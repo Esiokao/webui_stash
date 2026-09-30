@@ -1,15 +1,11 @@
 # test_39_power_saving.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("power_saving.global_settings")
 class TestGlobalSettings:
-
     def test_check_header(self, power_saving_page):
         result = power_saving_page.get_page_header_text()
         expected_val = "Power Saving"
@@ -69,7 +65,6 @@ class TestGlobalSettings:
 
 @allure.title("power_saving.advanced_power_saving_settings")
 class TestAdvancedPowerSavingSettings:
-
     def test_check_advanced_power_saving_settings_title(self, power_saving_page):
         result = power_saving_page.get_advanced_power_saving_settings_title()
         expected_val = "Advanced Power Saving Settings"
@@ -135,7 +130,6 @@ class TestAdvancedPowerSavingSettings:
 
 @allure.title("power_saving.summary")
 class TestSummary:
-
     def test_check_summary_header(self, power_saving_page):
         result = power_saving_page.get_summary_header_text()
         expected_val = "Summary"

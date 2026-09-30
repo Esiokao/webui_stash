@@ -1,12 +1,8 @@
 # tests/test_3_system_settings.py
 
-import time
-import allure
-import sys
 import os
-import pytest
-from webui.utils.all_exist_in_order import all_exist_in_order
-from webui.mixins.TestUtils import ValueCheckMixins
+
+import allure
 
 
 @allure.title("System Settings.IPInformation")
@@ -79,7 +75,6 @@ class TestIPInformation:
 
 @allure.title("System Settings.DeviceInformation")
 class TestSystemInformation:
-
     def test_check_system_name(self, system_settings_page):
         title, value = system_settings_page.get_system_name_title_and_value()
 

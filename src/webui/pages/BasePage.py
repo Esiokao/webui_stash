@@ -1,11 +1,11 @@
 # pages/BasePage.py
 import os
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import Select
 
 from dotenv import load_dotenv
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select, WebDriverWait
+
 load_dotenv("Settings.env")
 
 
@@ -158,7 +158,7 @@ class BasePage:
             if element:
                 return element.get_attribute("value")
             # logging.warning(f"Element {locator} not found or not visible.")
-        except Exception as e:
+        except Exception:
             # logging.error(f"Error getting value from element {locator}: {e}", exc_info=True)
             return None
 
@@ -194,11 +194,11 @@ class BasePage:
         except Exception as e:
             print(f"Error getting label text: {e}")
             return None
-        
+
     def find_selected_value(self, locator: tuple[str, str]) -> str:
         """
         根據傳入的 locator 取得 select 元素中被選取的 value。
-        
+
         :param driver: Selenium 的 WebDriver 實例
         :param locator: 例如 ("id", "mySelect") 或 ("xpath", "//select[@name='abc']")
         :return: 被選取的 option 的 value
@@ -218,9 +218,7 @@ class BasePage:
         """
         try:
             # Wait for the parent element to appear
-            parent_element = WebDriverWait(self.driver, timeout).until(
-                EC.presence_of_element_located(locator)
-            )
+            parent_element = WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))
 
             # Find all child elements
             cells = parent_element.find_elements(By.CLASS_NAME, cells_cls_name)
@@ -229,8 +227,6 @@ class BasePage:
         except Exception as e:
             print(f"Error for element {locator} to find cells: {e}")
             return []
-
-    
 
     def wait_for_element_to_disappear(self, locator):
         """
@@ -276,9 +272,7 @@ class BasePage:
         """
         try:
             # 使用顯式等待確保元素可見
-            checkbox = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located(locator)
-            )
+            checkbox = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
             # 檢查 checkbox 是否被選中
             return checkbox.is_selected()
         except Exception as e:
@@ -294,9 +288,7 @@ class BasePage:
         :param get_text_func: 傳入一個函式，接收 checkbox 元素，回傳對應的文字
         :return: 未勾選且可見的 checkbox 對應文字列表
         """
-        parent_element = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located(locator)
-        )
+        parent_element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
         checkboxes = parent_element.find_elements(By.CSS_SELECTOR, "input[type='checkbox']")
         unchecked_texts = []
         for checkbox in checkboxes:
@@ -312,14 +304,12 @@ class BasePage:
         """
         通用方法：取得父元素下所有被勾選且可見的 checkbox 對應的文字。
         可依據不同 HTML 結構，傳入自訂的 get_text_func 來取得對應文字。
-        
+
         :param locator: 父元素的定位器 (tuple, 例如 (By.CSS_SELECTOR, "tbody"))
         :param get_text_func: 傳入一個函式，接收 checkbox 元素，回傳對應的文字
         :return: 被勾選且可見的 checkbox 對應文字列表
         """
-        parent_element = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located(locator)
-        )
+        parent_element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
         checkboxes = parent_element.find_elements(By.CSS_SELECTOR, "input[type='checkbox']")
         selected_texts = []
         for checkbox in checkboxes:
@@ -352,8 +342,8 @@ class BasePage:
         try:
             parent_span = checkbox.find_element(By.XPATH, "./ancestor::span[1]")
             text = parent_span.text
-            if '\xa0' in text:
-                return text.split('\xa0', 1)[1]
+            if "\xa0" in text:
+                return text.split("\xa0", 1)[1]
             return text
         except Exception:
             return None

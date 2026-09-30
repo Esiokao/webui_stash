@@ -1,15 +1,11 @@
 # test_28_pppoe_circuit_id_insertion_settings.py
 
+
 import allure
-import pytest
-import asyncio
-import os
-from webui.utils.all_exist_in_order import all_exist_in_order
 
 
 @allure.title("PPPoE_Circuit_ID_Insertion_Settings.PPPoE_Circuit_ID_Insertion_State_Settings")
 class TestPPPoECircuitIdInsertionSettings:
-
     def test_check_header(self, pppoe_circuit_id_insertion_settings_page):
         result = pppoe_circuit_id_insertion_settings_page.get_page_header_text()
         expected_val = "PPPoE Circuit ID Insertion Settings"
@@ -55,7 +51,6 @@ class TestPPPoECircuitIdInsertionSettings:
 
 @allure.title("PPPoE_Circuit_ID_Insertion_Settings.PPPoE_Circuit_ID_Insertion_Port_Settings")
 class TestPPPoECircuitIDInsertionPortSettings:
-
     def test_check_pppoe_circuit_id_insertion_port_header(self, pppoe_circuit_id_insertion_settings_page):
         result = pppoe_circuit_id_insertion_settings_page.get_pppoe_circuit_id_insertion_port_header_text()
         expected_val = "PPPoE Circuit ID Insertion Port Settings"

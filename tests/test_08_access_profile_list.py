@@ -1,14 +1,10 @@
 # test_8_access_profile_list.py
-import time
 import allure
 import pytest
-
-from webui.utils.all_exist_in_order import all_exist_in_order
 
 
 @allure.title("access_profile_list")
 class TestAccessProfileList:
-
     def test_check_header(self, access_profile_list_page):
         result = access_profile_list_page.get_page_header_text()
         expected_val = "Access Profile List"

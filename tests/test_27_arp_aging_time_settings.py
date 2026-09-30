@@ -1,15 +1,11 @@
 # test_27_arp_aging_time_settings.py
 
+
 import allure
-import pytest
-import asyncio
-import os
-from webui.utils.all_exist_in_order import all_exist_in_order
 
 
 @allure.title("arp_aging_time_settings")
 class TestArpAgingTimeSettings:
-
     def test_check_header(self, arp_aging_time_settings_page):
         result = arp_aging_time_settings_page.get_page_header_text()
         expected_val = "ARP Aging Time Settings"

@@ -1,6 +1,8 @@
-from selenium.webdriver.common.by import By
 import json
 import re
+
+from selenium.webdriver.common.by import By
+
 
 class LocatorGenerator:
     @staticmethod
@@ -9,7 +11,7 @@ class LocatorGenerator:
         Generate a more stable XPath from a full path
         """
         # Remove position indices where possible
-        simplified = re.sub(r'\[\d+\]', '', element_path)
+        simplified = re.sub(r"\[\d+\]", "", element_path)
         # Add meaningful attributes if available
         return simplified
 
@@ -36,7 +38,7 @@ class LocatorGenerator:
         """
         Export locators to a Python file
         """
-        with open(output_file, 'w', encoding='utf-8') as f:
+        with open(output_file, "w", encoding="utf-8") as f:
             f.write("from selenium.webdriver.common.by import By\n\n")
             f.write("class Locators:\n")
             for name, locator in locators_dict.items():
@@ -47,5 +49,5 @@ class LocatorGenerator:
         """
         Import locators from a JSON file
         """
-        with open(json_file, 'r', encoding='utf-8') as f:
-            return json.load(f) 
+        with open(json_file, "r", encoding="utf-8") as f:
+            return json.load(f)

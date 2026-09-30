@@ -1,15 +1,11 @@
 # test_26_mac_address_aging_time.py
 
+
 import allure
-import pytest
-import asyncio
-import os
-from webui.utils.all_exist_in_order import all_exist_in_order
 
 
 @allure.title("mac_address_aging_time")
 class TestMacAddressAgingTime:
-
     def test_check_header(self, mac_address_aging_time_page):
         result = mac_address_aging_time_page.get_page_header_text()
         expected_val = "MAC Address Aging Time"

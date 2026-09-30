@@ -1,15 +1,11 @@
 # test_22_snmp_host_table.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("snmp_host_table")
 class TestSNMPHostTable:
-
     def test_check_header(self, snmp_host_table_page):
         result = snmp_host_table_page.get_page_header_text()
         expected_val = "SNMP Host Table"

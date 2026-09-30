@@ -1,15 +1,11 @@
 # test_30_telnet_settings.py
 
+
 import allure
-import pytest
-import asyncio
-import os
-from webui.utils.all_exist_in_order import all_exist_in_order
 
 
 @allure.title("Telnet_Settings")
 class TestTelnetSettings:
-
     def test_check_header(self, telnet_settings_page):
         result = telnet_settings_page.get_page_header_text()
         expected_val = "Telnet Settings"

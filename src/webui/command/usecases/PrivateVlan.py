@@ -6,7 +6,7 @@ def run(crt_env):
     try:
         private_vlan_command = PrivateVlanCommand(crt_env)
 
-        vlans = [{'vlanName': 'vlan' + str(i + 1), 'vlanID': str(i + 1)} for i in range(1, 4094)]
+        vlans = [{"vlanName": "vlan" + str(i + 1), "vlanID": str(i + 1)} for i in range(1, 4094)]
 
         private_vlan_command.createPrivateVlan(vlans)
 
@@ -18,6 +18,5 @@ def run(crt_env):
 
         return True
 
-    except Exception as e:
-
+    except Exception:
         return False

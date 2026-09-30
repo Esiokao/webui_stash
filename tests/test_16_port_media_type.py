@@ -1,15 +1,11 @@
 # test_16_port_media_type.py
 
-import allure
-import pytest
-import asyncio
 
-from webui.utils.all_exist_in_order import all_exist_in_order
+import allure
 
 
 @allure.title("port_media_type")
 class TestPortMediaType:
-
     def test_check_header(self, port_media_type_page):
         result = port_media_type_page.get_page_header_text()
         expected_val = "Port Media Type"

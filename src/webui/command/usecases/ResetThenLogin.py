@@ -1,7 +1,7 @@
-from webui.command.Invokers.TestInvoker import TestInvoker
 from webui.command.commands.LoginCommand import LoginCommand
 from webui.command.commands.ResetCommand import ResetCommand
 from webui.command.config import CONFIG
+from webui.command.Invokers.TestInvoker import TestInvoker
 
 
 def run(crt_env):
@@ -9,7 +9,7 @@ def run(crt_env):
         # init command
         reset_command = ResetCommand(crt_env)
 
-        login_command = LoginCommand(crt_env, CONFIG['ADMIN_USER_ACCOUNT'], CONFIG['ADMIN_USER_PASSWORD'])
+        login_command = LoginCommand(crt_env, CONFIG["ADMIN_USER_ACCOUNT"], CONFIG["ADMIN_USER_PASSWORD"])
 
         test_invoker = TestInvoker.TestInvoker()
 
@@ -22,6 +22,5 @@ def run(crt_env):
 
         return True
 
-    except Exception as e:
-
+    except Exception:
         return False

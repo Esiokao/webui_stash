@@ -1,10 +1,6 @@
 # tests/test_2_device_information.py
-import sys
-import os
 import allure
-import pytest
 
-from webui.pages.DeviceInformationPage import DeviceInformationPage
 from webui.mixins.TestUtils import ValueCheckMixins
 
 
@@ -126,7 +122,6 @@ class TestDeviceInformation(ValueCheckMixins):
 
 @allure.title("Device Information.Device Status and Quick Configurations")
 class TestDeviceStatusAndQuickConfigurations(ValueCheckMixins):
-
     def test_check_stp(self, device_information_page, config):
         title, value = device_information_page.get_stp()
         title_result = self.check_title(config["device_information"]["stp"], title)

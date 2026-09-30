@@ -1,10 +1,5 @@
+
 from scapy.all import *
-
-import sys
-import os
-
-
-
 
 from webui.scapy.utils.randomIP import randomIP as randIP
 from webui.scapy.utils.randomMac import random_mac as randMac
@@ -13,9 +8,7 @@ from webui.scapy.utils.randomMac import random_mac as randMac
 def send_dhcp_discover():
     # 創建 Ethernet 層
     # ether = Ether(dst="ff:ff:ff:ff:ff:ff", src=RandMAC(), type=0x0800)
-    ether = Ether(dst="ff:ff:ff:ff:ff:ff",
-                  src='00:AA:BB:CC:DD:FF',
-                  type=0x0800)
+    ether = Ether(dst="ff:ff:ff:ff:ff:ff", src="00:AA:BB:CC:DD:FF", type=0x0800)
 
     # 創建 IP 層
     ip = IP(src="10.90.90.250", dst="255.255.255.255")
@@ -24,9 +17,7 @@ def send_dhcp_discover():
     udp = UDP(sport=68, dport=67)
 
     # 創建 BOOTP 層
-    bootp = BOOTP(chaddr=[RandMAC().replace(":", "")],
-                  xid=RandInt(),
-                  flags=0x8000)
+    bootp = BOOTP(chaddr=[RandMAC().replace(":", "")], xid=RandInt(), flags=0x8000)
 
     # 創建 DHCP 層
     dhcp = DHCP(options=[("message-type", "discover"), "end"])
@@ -38,8 +29,7 @@ def send_dhcp_discover():
     sendp(dhcp_discover)
 
 
-def send_dhcp_offer(client_mac, client_ip, server_ip, server_mac, vlan_id,
-                    iface):
+def send_dhcp_offer(client_mac, client_ip, server_ip, server_mac, vlan_id, iface):
     # 創建 Ethernet 層
     ether = Ether(dst=client_mac, src=server_mac)
 
@@ -53,27 +43,27 @@ def send_dhcp_offer(client_mac, client_ip, server_ip, server_mac, vlan_id,
     udp = UDP(sport=67, dport=68)
 
     # 創建 BOOTP 層
-    bootp = BOOTP(op=2,
-                  yiaddr=client_ip,
-                  siaddr=server_ip,
-                  chaddr=client_mac.replace(':', ''))
+    bootp = BOOTP(op=2, yiaddr=client_ip, siaddr=server_ip, chaddr=client_mac.replace(":", ""))
 
     # 創建 DHCP 層
-    dhcp = DHCP(options=[("message-type", "offer"), (
-        "server_id",
-        server_ip), ("lease_time", 86400), (
-            "subnet_mask",
-            "255.255.255.0"), ("router", server_ip), ("name_server",
-                                                      server_ip), "end"])
+    dhcp = DHCP(
+        options=[
+            ("message-type", "offer"),
+            ("server_id", server_ip),
+            ("lease_time", 86400),
+            ("subnet_mask", "255.255.255.0"),
+            ("router", server_ip),
+            ("name_server", server_ip),
+            "end",
+        ]
+    )
 
     # 將所有層結合在一起
     dhcp_offer = ether / dot1q / ip / udp / bootp / dhcp
 
     # 發送 DHCP Offer 封包
     sendp(dhcp_offer, iface=iface, verbose=False)
-    print(
-        f"DHCP Offer sent to {client_mac} on VLAN {vlan_id} via {iface}, offering IP {client_ip}"
-    )
+    print(f"DHCP Offer sent to {client_mac} on VLAN {vlan_id} via {iface}, offering IP {client_ip}")
 
 
 if __name__ == "__main__":
@@ -91,6 +81,5 @@ if __name__ == "__main__":
         vlan_id = random.randint(1, 4094)  # 設置 VLAN ID
         iface = "eth1"  # 設定網絡接口
 
-        send_dhcp_offer(client_mac, client_ip, server_ip, server_mac, vlan_id,
-                        iface)
+        send_dhcp_offer(client_mac, client_ip, server_ip, server_mac, vlan_id, iface)
     # send_dhcp_discover()
