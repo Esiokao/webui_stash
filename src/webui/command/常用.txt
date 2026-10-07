@@ -1,0 +1,22 @@
+#import同個階層的module
+
+import sys
+import os
+
+def getScriptPath():
+  return os.path.split(os.path.realpath(__file__))[0]
+
+CURRENT_PATH = getScriptPath()
+
+if CURRENT_PATH not in sys.path:
+  sys.path.append(CURRENT_PATH)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#import 不同階層
+
+# 將 invokers 資料夾的路徑加入 sys.path
+
+sys.path.append(os.path.join(getScriptPath(), 'invokers'))
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

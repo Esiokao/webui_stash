@@ -1,0 +1,43 @@
+# Switch Test Data Matrix & Boundary Criteria
+device_profiles:
+  DGS-1210-10XS:
+    ports_count: 10
+    default_ip: "192.168.1.1"
+    default_mask: "255.255.255.0"
+    default_gateway: "0.0.0.0"
+    default_vid: 1
+    max_vlans: 256
+    jumbo_frame_max_bytes: 9000
+
+network_boundary_cases:
+  valid_ips:
+    - ip: "192.168.1.1"
+      mask: "255.255.255.0"
+    - ip: "10.0.0.254"
+      mask: "255.0.0.0"
+    - ip: "172.16.50.1"
+      mask: "255.255.0.0"
+
+  invalid_ips:
+    - ip: "256.0.0.1"
+      reason: "Octet exceeds 255"
+    - ip: "192.168.1"
+      reason: "Incomplete address"
+    - ip: "224.0.0.5"
+      reason: "Class D Multicast"
+    - ip: "127.0.0.1"
+      reason: "Loopback reserved"
+    - ip: "192.168.1.1/24"
+      reason: "CIDR notation in standard IPv4 input"
+
+vlan_boundary_cases:
+  valid_vids: [1, 2, 100, 4094]
+  invalid_vids:
+    - vid: 0
+      reason: "Reserved VID 0"
+    - vid: 4095
+      reason: "Reserved VID 4095"
+    - vid: 4096
+      reason: "Out of 12-bit range"
+    - vid: -1
+      reason: "Negative number"

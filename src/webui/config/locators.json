@@ -1,0 +1,144 @@
+{
+  "system_settings": {
+    "menu": {
+      "system": {
+        "by": "xpath",
+        "value": "//div[contains(@class, 'menu')]//li[contains(., 'System')]"
+      },
+      "settings": {
+        "by": "xpath",
+        "value": "//a[contains(., 'Settings')]"
+      }
+    },
+    "ip_config": {
+      "parent": {
+        "by": "xpath",
+        "value": "//div[contains(@class, 'ip-config')]"
+      },
+      "option_one": {
+        "by": "css",
+        "value": "input[name='ip-config'][value='1']"
+      },
+      "option_two": {
+        "by": "css",
+        "value": "input[name='ip-config'][value='2']"
+      }
+    },
+    "network": {
+      "interface_name": {
+        "by": "id",
+        "value": "InterfaceName"
+      },
+      "vlan_name": {
+        "by": "id",
+        "value": "VlanName"
+      },
+      "ip_address": {
+        "title": {
+          "by": "xpath",
+          "value": "//span[contains(text(), 'IP Address')]"
+        },
+        "octet1": {
+          "by": "xpath",
+          "value": "//input[@name='ip-octet-1']"
+        },
+        "octet2": {
+          "by": "xpath",
+          "value": "//input[@name='ip-octet-2']"
+        },
+        "octet3": {
+          "by": "xpath",
+          "value": "//input[@name='ip-octet-3']"
+        },
+        "octet4": {
+          "by": "xpath",
+          "value": "//input[@name='ip-octet-4']"
+        }
+      },
+      "subnet_mask": {
+        "title": {
+          "by": "xpath",
+          "value": "//span[contains(text(), 'Subnet Mask')]"
+        },
+        "octet1": {
+          "by": "xpath",
+          "value": "//input[@name='subnet-octet-1']"
+        },
+        "octet2": {
+          "by": "xpath",
+          "value": "//input[@name='subnet-octet-2']"
+        },
+        "octet3": {
+          "by": "xpath",
+          "value": "//input[@name='subnet-octet-3']"
+        },
+        "octet4": {
+          "by": "xpath",
+          "value": "//input[@name='subnet-octet-4']"
+        }
+      },
+      "gateway": {
+        "title": {
+          "by": "xpath",
+          "value": "//span[contains(text(), 'Gateway')]"
+        },
+        "octet1": {
+          "by": "xpath",
+          "value": "//input[@name='gateway-octet-1']"
+        },
+        "octet2": {
+          "by": "xpath",
+          "value": "//input[@name='gateway-octet-2']"
+        },
+        "octet3": {
+          "by": "xpath",
+          "value": "//input[@name='gateway-octet-3']"
+        },
+        "octet4": {
+          "by": "xpath",
+          "value": "//input[@name='gateway-octet-4']"
+        }
+      }
+    },
+    "dhcp": {
+      "option12": {
+        "state": {
+          "by": "id",
+          "value": "DHCPOption12State"
+        },
+        "hostname": {
+          "by": "id",
+          "value": "DHCPOption12HostName"
+        }
+      },
+      "option77": {
+        "input": {
+          "by": "id",
+          "value": "DhcpOption77"
+        },
+        "table": {
+          "by": "class",
+          "value": "has-gutter"
+        }
+      }
+    },
+    "system": {
+      "name": {
+        "by": "id",
+        "value": "SystemName"
+      },
+      "location": {
+        "by": "id",
+        "value": "SystemLocation"
+      },
+      "contact": {
+        "by": "id",
+        "value": "SystemContact"
+      },
+      "login_timeout": {
+        "by": "id",
+        "value": "LoginTimeout"
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "WebUI"
+version = "0.1.0"
+description = ""
+authors = ["esio <esiokao@gmail.com>"]
+readme = "README.md"
+packages = [
+    { include = "webui", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^8.2.2"
+selenium = "^4.22.0"
+pytest-cov = "^5.0.0"
+mypy = "^1.10.1"
+aiohttp = "^3.9.5"
+requests = "^2.32.3"
+pytest-html = "^4.1.1"
+python-dotenv = "^1.0.1"
+allure-pytest = "^2.13.5"
+pytest-rerunfailures = "^15.0"
+python-generate-mac = "^1.3.1"
+scapy = "^2.6.1"
+aiosmtpd = "^1.4.6"
+pyserial = "^3.5"
+asyncio = "^3.4.3"
+pyserial-asyncio = "^0.6"
+colorama = "^0.4.6"
+prompt-toolkit = "^3.0.51"
+ruff = "^0.8.0"
+
+
+
+[tool.poetry.group.dev.dependencies]
+pytest-asyncio = "^0.26.0"
+pytest-xdist = "^3.6.1"
+commitizen = "^4.19.1"
+pre-commit = "^4.6.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+serial = "webui.command.main:main"
+
+[tool.ruff]
+line-length = 160
+target-version = "py310"
+include = ["tests/**/*.py"]
+extend-exclude = [".properties"]
+
+[tool.ruff.lint]
+select = ["F"]
+
+[tool.ruff.format]
+quote-style = "double"
+
